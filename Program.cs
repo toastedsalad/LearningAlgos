@@ -4,6 +4,16 @@ using System.Text;
 
 namespace LearningAlgos
 {
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int val = 0, ListNode next = null)
+        {
+            this.val = val;
+            this.next = next;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -33,6 +43,109 @@ namespace LearningAlgos
             // NumberOfSteps
             //var result = program.NumberOfStepsBitWise(14);
             //Console.WriteLine(result);
+
+            // Middle of the linked list
+            // We can create a linked list by instantiating a bunch of 
+            // ListNode objects and then setting their .next attribute
+            // to another ListNode object:
+            //var node1 = new ListNode(1);
+            //var node2 = new ListNode(4);
+            //var node3 = new ListNode(7);
+            //node1.next = node2;
+            //node2.next = node3;
+            //var result = program.MiddleNode(node1);
+            //Console.WriteLine(result.val);
+
+            // Middle of the linked list with built in new LinkedList<int>()
+            //LinkedList<int> linkedList = new LinkedList<int>();
+            //linkedList.AddLast(1);
+            //linkedList.AddLast(2);
+            //linkedList.AddLast(3);
+
+            // Can construct ransom note from the magazine
+            //var ransomNote = program.CanConstructRansomNote("gobig", "ofagtwgetweqrebi");
+            //Console.WriteLine(ransomNote);
+
+            // Can construct ransom note from the magazine
+            //var ransomNote = program.CanCOnstructRansomNoteHashMap("gobig", "ofagtwgetweqrebi");
+            //Console.WriteLine(ransomNote);
+        }
+
+        public bool CanCOnstructRansomNoteHashMap(string ransomNote, string magazine)
+        {
+            if (magazine.Length < ransomNote.Length)
+            {
+                return false;
+            }
+
+            var magazineLetters = new Dictionary<char, int>();
+            
+            for (int i = 0; i < magazine.Length; i++)
+            {
+                var letterMag = magazine[i];
+
+                int currentCount = magazineLetters.GetValueOrDefault(letterMag, 0);
+                magazineLetters[letterMag] = currentCount + 1;
+            }
+
+            for (int i = 0; i < ransomNote.Length; i++)
+            {
+                var letterRan = ransomNote[i];
+
+                int currentCount = magazineLetters.GetValueOrDefault(letterRan, 0);
+
+                if (currentCount == 0)
+                {
+                    return false;
+                }
+
+                magazineLetters[letterRan] = currentCount - 1;
+            }
+
+            return true;
+
+            // Time complexity O(n) because we must go over each letter of the magazine once. Complexity depends on the length of the magazine.
+            // We can also return false immediately if magazine is lower in length than the ransome note.
+
+            // Space complextity O(k) where k is the number of distinct characters in the magazine.
+
+        }
+
+        public bool CanConstructRansomNote(string ransomNote, string magazine)
+        {
+            for (int i = 0; i < ransomNote.Length; i++)
+            {
+                var requiredLetter = ransomNote[i];
+
+                var requiredLetterIndexInMagazine = magazine.IndexOf(requiredLetter);
+
+                if (requiredLetterIndexInMagazine == -1)
+                {
+                    return false;
+                }
+
+                // Length is not based of 0, 3 == 3 positions
+                magazine = magazine.Substring(0, requiredLetterIndexInMagazine) + magazine.Substring(requiredLetterIndexInMagazine + 1);
+            }
+
+            return true;
+
+            // Time complexity O(n*m) as we for each letter in the ransom note we go through a magazine.
+            // Space complexity O(n) as we temporarily create a new string to store a copy of the magazine with one less letter.
+        }
+
+        public ListNode MiddleNode(ListNode head)
+        {
+            ListNode middle = head;
+            ListNode end = head;
+
+            while (end != null && end.next != null)
+            {
+                middle = middle.next;
+                end = end.next.next;
+            }
+
+            return middle;
         }
 
         public int NumberOfStepsBitWise(int num)
