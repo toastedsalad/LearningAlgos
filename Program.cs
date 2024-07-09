@@ -71,6 +71,56 @@ namespace LearningAlgos
             //Console.WriteLine(ransomNote);
         }
 
+        public static int[] PlusOne(int[] digits)
+        {
+            var lastMember = digits.Length - 1;
+
+            for (int i = lastMember; i >= 0; i--)
+            {
+                digits[i]++;
+
+                if (digits[i] < 10)
+                {
+                    return digits;
+                }
+
+                digits[i] = 0;
+
+                if (i == 0)
+                {
+                    int[] newdigitArray = new int[digits.Length + 1];
+                    newdigitArray[0] = 1;
+                    Array.Copy(digits, 0, newdigitArray, 1, digits.Length);
+                    return newdigitArray;
+                }
+            }
+
+            return digits;
+        }
+
+        public void MoveZeroes(int[] nums)
+        {
+            var index = 0;
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] != 0)
+                {
+                    nums[index++] = nums[i];
+                }
+            }
+
+            for (int i = index; i < nums.Length; i++)
+            {
+                nums[i] = 0;
+            }
+
+            Console.WriteLine(string.Join(", ", nums));
+
+            // Complexity is O(N) we itereate through a list linearly.
+            // Space complexity is O(1) where 1 is the orrignal array.
+        }
+
         public static void Alternate(string word1, string word2)
         {
             StringBuilder result = new StringBuilder();
