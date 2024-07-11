@@ -20,6 +20,10 @@ namespace LearningAlgos
         {
             var program = new Program();
 
+            var s = "loveleetcode";
+            var result = FirstUniqueChar.FirstUniqueCharacter(s);
+            Console.WriteLine(result);
+
             // RunningSum
             //int[] nums = { 1, 2, 3, 4 };
             //var result = program.RunningSum(nums);
@@ -33,8 +37,8 @@ namespace LearningAlgos
             //Console.WriteLine(result);
 
             // FizzBuzz
-            var result = program.FizzBuzzWList(15);
-            Console.WriteLine(string.Join("\n", result));
+            //var result = program.FizzBuzzWList(15);
+            //Console.WriteLine(string.Join("\n", result));
 
             // NumberOfSteps
             //var result = program.NumberOfSteps(8);
@@ -69,33 +73,6 @@ namespace LearningAlgos
             // Can construct ransom note from the magazine
             //var ransomNote = program.CanCOnstructRansomNoteHashMap("gobig", "ofagtwgetweqrebi");
             //Console.WriteLine(ransomNote);
-        }
-
-        public static int[] PlusOne(int[] digits)
-        {
-            var lastMember = digits.Length - 1;
-
-            for (int i = lastMember; i >= 0; i--)
-            {
-                digits[i]++;
-
-                if (digits[i] < 10)
-                {
-                    return digits;
-                }
-
-                digits[i] = 0;
-
-                if (i == 0)
-                {
-                    int[] newdigitArray = new int[digits.Length + 1];
-                    newdigitArray[0] = 1;
-                    Array.Copy(digits, 0, newdigitArray, 1, digits.Length);
-                    return newdigitArray;
-                }
-            }
-
-            return digits;
         }
 
         public void MoveZeroes(int[] nums)
