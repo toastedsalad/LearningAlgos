@@ -20,9 +20,9 @@ namespace LearningAlgos
         {
             var program = new Program();
 
-            var s = "loveleetcode";
-            var result = FirstUniqueChar.FirstUniqueCharacter(s);
-            Console.WriteLine(result);
+            //var s = "loveleetcode";
+            //var result = FirstUniqueChar.FirstUniqueCharacter(s);
+            //Console.WriteLine(result);
 
             // RunningSum
             //int[] nums = { 1, 2, 3, 4 };
@@ -75,89 +75,6 @@ namespace LearningAlgos
             //Console.WriteLine(ransomNote);
         }
 
-        public void MoveZeroes(int[] nums)
-        {
-            var index = 0;
-
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (nums[i] != 0)
-                {
-                    nums[index++] = nums[i];
-                }
-            }
-
-            for (int i = index; i < nums.Length; i++)
-            {
-                nums[i] = 0;
-            }
-
-            Console.WriteLine(string.Join(", ", nums));
-
-            // Complexity is O(N) we itereate through a list linearly.
-            // Space complexity is O(1) where 1 is the orrignal array.
-        }
-
-        public static void Alternate(string word1, string word2)
-        {
-            StringBuilder result = new StringBuilder();
-
-            int maxLength = Math.Max(word1.Length, word2.Length);
-            for (int i = 0; i < maxLength; i++)
-            {
-                if (i < word1.Length)
-                {
-                    result.Append(word1[i]);
-                }
-                if (i < word2.Length)
-                {
-                    result.Append(word2[i]);
-                }
-            }
-
-            Console.WriteLine(result.ToString());
-        }
-
-        public bool CanCOnstructRansomNoteHashMap(string ransomNote, string magazine)
-        {
-            if (magazine.Length < ransomNote.Length)
-            {
-                return false;
-            }
-
-            var magazineLetters = new Dictionary<char, int>();
-            
-            for (int i = 0; i < magazine.Length; i++)
-            {
-                var letterMag = magazine[i];
-
-                int currentCount = magazineLetters.GetValueOrDefault(letterMag, 0);
-                magazineLetters[letterMag] = currentCount + 1;
-            }
-
-            for (int i = 0; i < ransomNote.Length; i++)
-            {
-                var letterRan = ransomNote[i];
-
-                int currentCount = magazineLetters.GetValueOrDefault(letterRan, 0);
-
-                if (currentCount == 0)
-                {
-                    return false;
-                }
-
-                magazineLetters[letterRan] = currentCount - 1;
-            }
-
-            return true;
-
-            // Time complexity O(n) because we must go over each letter of the magazine once. Complexity depends on the length of the magazine.
-            // We can also return false immediately if magazine is lower in length than the ransome note.
-
-            // Space complextity O(k) where k is the number of distinct characters in the magazine.
-
-        }
-
         public bool CanConstructRansomNote(string ransomNote, string magazine)
         {
             for (int i = 0; i < ransomNote.Length; i++)
@@ -171,6 +88,7 @@ namespace LearningAlgos
                     return false;
                 }
 
+                // Why am I doing this?
                 // Length is not based of 0, 3 == 3 positions
                 magazine = magazine.Substring(0, requiredLetterIndexInMagazine) + magazine.Substring(requiredLetterIndexInMagazine + 1);
             }
