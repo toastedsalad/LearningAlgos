@@ -20,6 +20,10 @@ namespace LearningAlgos
         {
             var program = new Program();
 
+
+            int[] haystack = { 1, 2, 3, 4 };
+            LinearSearchAlgo.SearchLinearly(haystack, 10);
+            
             //var s = "loveleetcode";
             //var result = FirstUniqueChar.FirstUniqueCharacter(s);
             //Console.WriteLine(result);
