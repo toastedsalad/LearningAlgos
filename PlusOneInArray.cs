@@ -24,6 +24,8 @@ namespace LearningAlgos
 
                 digits[i] = 0;
 
+                // Here we check if we set the start of the array to zero.
+                // If that happened we need to add one to the start of the array and return.
                 if (i == 0)
                 {
                     int[] newdigitArray = new int[digits.Length + 1];

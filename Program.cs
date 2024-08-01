@@ -18,12 +18,20 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var program = new Program();
+            var myArray = ArrayGenerator.GenerateArray(10);
+            Console.WriteLine(string.Join(", ", myArray));
 
+            BubbleSort.SortBubbly(myArray);
 
-            int[] haystack = { 1, 2, 3, 4 };
-            LinearSearchAlgo.SearchLinearly(haystack, 10);
+            Console.WriteLine(string.Join(", ", myArray));
             
+            // bool[] haystack = { false, false, false, false, true };
+            // var indexOfNeedle = SqrtSearch.Search(haystack);
+            // Console.WriteLine($"The ball will break if thrown form the {indexOfNeedle} floor");
+
+            //int[] haystack = { 1, 2, 3, 4 };
+            //LinearSearchAlgo.SearchLinearly(haystack, 10
+
             //var s = "loveleetcode";
             //var result = FirstUniqueChar.FirstUniqueCharacter(s);
             //Console.WriteLine(result);
