@@ -18,12 +18,14 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var myArray = ArrayGenerator.GenerateArray(10);
-            Console.WriteLine(string.Join(", ", myArray));
 
-            BubbleSort.SortBubbly(myArray);
+            LinkedListHelpers<int>.CreateLinkedList(5);
+            // var myArray = ArrayGenerator.GenerateArray(10);
+            // Console.WriteLine(string.Join(", ", myArray));
 
-            Console.WriteLine(string.Join(", ", myArray));
+            // BubbleSort.SortBubbly(myArray);
+
+            // Console.WriteLine(string.Join(", ", myArray));
             
             // bool[] haystack = { false, false, false, false, true };
             // var indexOfNeedle = SqrtSearch.Search(haystack);

@@ -14,6 +14,52 @@ In other words it's just memory and you have to tell to the computer what it is.
 
 * So arrays are fixed size and if you want to grow it you probably need to create a new array and write all the elements of your old array there.
 
+## Linked List
+
+Just a reminded a true array CANNOT grow!
+And it's not the only thing that sucks about an array.
+Additionally you can't delete things from it and you cant insert things in it.
+
+Introducing linked lists. They can be singly linked or doubly linked.
+Also known as the node based data structure.
+
+Linked list is data organized in a way where a single node can be visited and it also points to the next node.
+
+Something like this:
+A > B > C > D...
+
+So now if we want to get the [i] element we need to start from the head element and go through the whole thing to the ith place.
+
+In pseudo code think about it this way:
+```
+Node<T>
+  val: T
+  next?: Node<T>
+```
+So the above is a singly linked list, where you can only walk one way.
+A doubly linked list improves the upone the design by allowing to walk backwards.
+
+A <> B <> C <> D...
+
+```
+Node<T>
+  val: T
+  next?: Node<T>
+  prev?: Node<T>
+```
+
+Inserting is supposedly cheap and fast here cause in order to do it you only need adjust pointers of the new as existing nodes.
+
+These operations cost the same amount of time no matter how big the linked list is.
+Setting the next of the previous property costs the same amount of time.
+
+To inesrt into a linked list at a given position is O(1).
+
+And deletion is just the same. We just break some links and repoint them to still existing neighbours.
+Ordering of operations is extremely important here, cause you may lose access to your nodes if you're not careful.
+
+The complexity of deletion is also constant.
+
 # Algos: search
 ## Binary Search
 
