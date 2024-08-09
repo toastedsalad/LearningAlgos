@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace LearningAlgos;
 
@@ -28,9 +29,26 @@ public static class LinkedListHelpers<T>
         }
     }
 
-    public static void InsertAfterValue(int value, LinkedNode<int> headnode)
+    public static void InsertAfterValue(int searchValue, int newValue, LinkedNode<int> headnode)
     {
         Console.WriteLine("Inserting a value...");
+        var current = headnode;
+        while(current is not null)
+        {
+            // Check the value of the node
+            if(searchValue == current.NodeData)
+            {
+                var newNode = new LinkedNode<int>(newValue);
+                newNode.PrevNode = current;
+                newNode.NextNode = current.NextNode;
+                // We only need to deal with the previous of next if it is not null
+                if (current.NextNode is not null)
+                    current.NextNode.PrevNode = newNode;
+                current.NextNode = newNode;  
+            }
+
+            current = current.NextNode;
+        }
     }
 
     public static void CreateLinkedList(int nodeCount)
