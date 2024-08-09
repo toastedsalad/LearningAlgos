@@ -23,14 +23,19 @@ public static class LinkedListHelpers<T>
         var temp = headNode;
         while(temp is not null)
         {
-            Console.WriteLine(headNode.NodeData);
+            Console.WriteLine(temp.NodeData);
             temp = temp.NextNode;
         }
     }
 
+    public static void InsertAfterValue(int value, LinkedNode<int> headnode)
+    {
+        Console.WriteLine("Inserting a value...");
+    }
+
     public static void CreateLinkedList(int nodeCount)
     {
-        for(int i = nodeCount; i > 0; i--)
+        for(int i = 0; i < nodeCount; ++i)
         {
             var name = "LinkedNode" + i;
             Console.WriteLine(name);
