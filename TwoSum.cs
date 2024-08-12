@@ -28,7 +28,6 @@ public class TwoSum
     public int[] TwoSumLinearProer(int[] nums, int target) {
         Dictionary<int, int> map = new Dictionary<int, int>();
 
-        
         // [2,11,15,7]
         for(int i = 0; i <= nums.Length; i++)
         {  
