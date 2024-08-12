@@ -25,6 +25,28 @@ public class TwoSum
         return null;
     }
 
+    public int[] TwoSumLinearProer(int[] nums, int target) {
+        Dictionary<int, int> map = new Dictionary<int, int>();
+
+        
+        // [2,11,15,7]
+        for(int i = 0; i <= nums.Length; i++)
+        {  
+            // x = 9 - 2
+            int x = target - nums[i];
+            // Check if map contains 7;
+            if(map.ContainsKey(x) ){
+               return new int[] {map[x], i};
+            }
+
+            if (!map.ContainsKey(nums[i])){
+               map[nums[i]] = i;
+            }
+        }
+
+        return new int[0];
+    }
+
     public static int[] TwoSumLinear(int[] nums, int target)
     {
         // Do we need to try all possible pairs?
