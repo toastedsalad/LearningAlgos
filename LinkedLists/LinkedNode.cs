@@ -20,6 +20,7 @@ public static class LinkedListHelpers<T>
 {
     public static void PrintLinkedList(LinkedNode<T> headNode)
     {
+        Console.WriteLine("Printing linked list...");
         var temp = headNode;
         while(temp is not null)
         {
@@ -49,7 +50,51 @@ public static class LinkedListHelpers<T>
             current = current.NextNode;
         }
     }
+public static void DeleteNode(int nodeIndex, LinkedNode<int> headnode)
+    {
+        Console.WriteLine($"Deleting node {headnode}");
+        var current = headnode;
+            // Check the value of the node
+        for(int i = 0; i <= nodeIndex; i++)
+        {
+            if(i != nodeIndex && current is not null)
+            {
+                // So here if the we're not at the correc node we simply
+                // continue...
+                current = current.NextNode;
+                continue;
+            }
+            else if(i == nodeIndex && current is not null)
+            {
+                // When the node indexes match we do the deletion.
+                // We remove the pointers and hope that gc collects it.
 
+                // So what's the algo here...
+                // 1. Go to next node and set to previous to previous-previous
+                // 2. Go to previous and set next to next-next but only if it exists.
+
+
+                // How to handle first member.
+                if(current.NextNode is not null)
+                {
+                    current.NextNode.PrevNode = current.PrevNode;
+                }
+
+                if(current.PrevNode is not null)
+                {
+                    current.PrevNode.NextNode = current.NextNode;
+                }
+
+                current.NextNode = null;
+                current.PrevNode = null;
+            }
+            else
+            {
+                Console.WriteLine("There was nothing to delete..");
+            }
+        } 
+        
+    }
     public static void CreateLinkedList(int nodeCount)
     {
         for(int i = 0; i < nodeCount; ++i)

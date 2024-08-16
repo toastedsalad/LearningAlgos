@@ -23,40 +23,24 @@ namespace LearningAlgos
             
             var result = TwoSum.TwoSumLinear(nums, 100);
             Console.WriteLine(result);
-            // var node1 = new LinkedNode<int>(1);
-            // // How can I make a function to insert things into a linked list?
-            // var node2 = new LinkedNode<int>(2);
-            // var node3 = new LinkedNode<int>(3);
-            // var node6 = new LinkedNode<int>(6);
-            // node1.NextNode = node2;
-            // node2.PrevNode = node1;
-            // node2.NextNode = node3;
-            // node3.PrevNode = node2;
-            // node3.NextNode = node6;
-            // node6.PrevNode = node3;
-            // LinkedListHelpers<int>.PrintLinkedList(node1);
+            var node1 = new LinkedNode<int>(1);
+            // How can I make a function to insert things into a linked list?
+            var node2 = new LinkedNode<int>(2);
+            var node3 = new LinkedNode<int>(3);
+            var node6 = new LinkedNode<int>(6);
+            node1.NextNode = node2;
+            node2.PrevNode = node1;
+            node2.NextNode = node3;
+            node3.PrevNode = node2;
+            node3.NextNode = node6;
+            node6.PrevNode = node3;
+            LinkedListHelpers<int>.PrintLinkedList(node1);
 
-            // // To insert into this array at position three these are the motions.
-            // var node4 = new LinkedNode<int>(4);
-            // // Find the position where to insert a new element.
-            // // Then set the prev and next props of this new element. 
-            // node4.PrevNode = node3;
-            // node4.NextNode = node6;
+            LinkedListHelpers<int>.DeleteNode(0, node1);
 
-            // // First we go the previous node of the next node.
-            // // This is an important algo to set the previous of the next as otherwise
-            // // We would lose the link.
-            // node3.NextNode.PrevNode = node4;
-            // // Then from node 3 go next and next and set the prev.j
-            // node3.NextNode = node4;
-            // LinkedListHelpers<int>.PrintLinkedList(node1);
+            LinkedListHelpers<int>.PrintLinkedList(node1);
 
-            // // But what if we want to iterate throught the whole linked list looking for a specific value and then insert.
-            // // Is that even something useful?
-            
-            // LinkedListHelpers<int>.InsertAfterValue(6, 7, node1);
-            // LinkedListHelpers<int>.PrintLinkedList(node1);
-
+            LinkedListHelpers<int>.PrintLinkedList(node2);
 
             // var myArray = ArrayGenerator.GenerateArray(10);
             // Console.WriteLine(string.Join(", ", myArray));
