@@ -18,28 +18,29 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var node1 = new LinkedNode<int>(1);
+            var node1 = new Node<int>(1);
             // How can I make a function to insert things into a linked list?
-            var node2 = new LinkedNode<int>(2);
-            var node3 = new LinkedNode<int>(3);
-            var node6 = new LinkedNode<int>(6);
-            node1.NextNode = node2;
-            node2.PrevNode = node1;
-            node2.NextNode = node3;
-            node3.PrevNode = node2;
-            node3.NextNode = node6;
-            node6.PrevNode = node3;
-            LinkedListHelpers<int>.PrintLinkedList(node1);
+            var node2 = new Node<int>(2);
+            var node3 = new Node<int>(3);
+            var node6 = new Node<int>(6);
 
-            var node0 = new LinkedNode<int>(0);
-            LinkedListHelpers<int>.PrependingFirst(node1, node0);
+            var myqueue = new CustomQueue<int>();
+            myqueue.Enqueue(node1);
 
-            LinkedListHelpers<int>.PrintLinkedList(node0);
+            CustomQueueHelpers<int>.PrintLinkedList(node1);
 
-            var node7 = new LinkedNode<int>(7);
-            LinkedListHelpers<int>.AppendingLast(node0, node7);
+            myqueue.Enqueue(node2);
+            myqueue.Enqueue(node3);
+            myqueue.Enqueue(node6);
 
-            LinkedListHelpers<int>.PrintLinkedList(node0);
+            CustomQueueHelpers<int>.PrintLinkedList(node1);
+
+            Console.WriteLine(myqueue.Deque());
+             
+            CustomQueueHelpers<int>.PrintLinkedList(node1);
+            CustomQueueHelpers<int>.PrintLinkedList(node2);
+
+
             // var myArray = ArrayGenerator.GenerateArray(10);
             // Console.WriteLine(string.Join(", ", myArray));
 

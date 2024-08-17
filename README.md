@@ -60,6 +60,35 @@ Ordering of operations is extremely important here, cause you may lose access to
 
 The complexity of deletion is also constant.
 
+But if we were to find a value there's no other way than to walk the list.
+The time complexity in this case becomes O(n).
+From the practical implementation standpoitn, you should not return the node but only the retrieved value.
+Returning a node can be dangerouse as then someone can mess with our next and/or previous values.
+
+Getting the head or the tail of the linked list can become a constant operation if we have pointers to them.
+In general the deletion and insertion at the head or tail are very fast for the linked list.
+
+## Queue
+
+Our first data structure on top of the linked list is going to be the queue.
+It's a very common data structure.
+
+h     t
+A>B>C>D
+
+Queue is a fifo structure aka, first in first out.
+If we wanted to add another element to our queue we would update D to point to E and then update our tail pointer to point to this new element.
+
+h       t 
+A>B>C>D>E
+
+And when we pop, we pop from the head. And note that for the queues we can use a singly linked list.
+
+h     t 
+B>C>D>E
+
+Another common operation with queues is "peek" which would return the value of the head element without actually popping it.
+
 # Algos: search
 ## Binary Search
 
@@ -163,7 +192,9 @@ We unpack it to N^2 + N.
 And then we drop the insignificant + N. Simply because N^2 will be so much bigger than N.
 And what we're left with is O(N^2).
 
+# Is this an algo or is this a datastructure?
 
+A linked list. Is data structure itself but it also implies a certain way of managing the data.
 
 
 
