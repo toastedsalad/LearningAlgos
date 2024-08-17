@@ -18,11 +18,6 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-
-            int[] nums = [5,75,25];
-            
-            var result = TwoSum.TwoSumLinear(nums, 100);
-            Console.WriteLine(result);
             var node1 = new LinkedNode<int>(1);
             // How can I make a function to insert things into a linked list?
             var node2 = new LinkedNode<int>(2);
@@ -36,12 +31,15 @@ namespace LearningAlgos
             node6.PrevNode = node3;
             LinkedListHelpers<int>.PrintLinkedList(node1);
 
-            LinkedListHelpers<int>.DeleteNode(0, node1);
+            var node0 = new LinkedNode<int>(0);
+            LinkedListHelpers<int>.PrependingFirst(node1, node0);
 
-            LinkedListHelpers<int>.PrintLinkedList(node1);
+            LinkedListHelpers<int>.PrintLinkedList(node0);
 
-            LinkedListHelpers<int>.PrintLinkedList(node2);
+            var node7 = new LinkedNode<int>(7);
+            LinkedListHelpers<int>.AppendingLast(node0, node7);
 
+            LinkedListHelpers<int>.PrintLinkedList(node0);
             // var myArray = ArrayGenerator.GenerateArray(10);
             // Console.WriteLine(string.Join(", ", myArray));
 

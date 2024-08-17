@@ -29,10 +29,32 @@ public static class LinkedListHelpers<T>
         }
     }
 
-    public static void InsertAfterValue(int searchValue, int newValue, LinkedNode<int> headnode)
+    public static void PrependingFirst(LinkedNode<T> headnode, LinkedNode<T> newNode)
+    {
+        Console.WriteLine("Prepending a new first value...");
+        newNode.NextNode = headnode;
+        headnode.PrevNode = newNode;
+    }
+
+    public static void AppendingLast(LinkedNode<T> headnode, LinkedNode<T> newNode)
+    {
+        Console.WriteLine("Appending a new last value...");
+
+        // Need to iterate through the linked list until the next is null
+        var current = headnode;
+        while(current.NextNode is not null)
+        {
+            current = current.NextNode;
+        } 
+
+        newNode.PrevNode = current;
+        current.NextNode = newNode;
+    }
+
+    public static void InsertAfterValue(int searchValue, int newValue, LinkedNode<int> headNode)
     {
         Console.WriteLine("Inserting a value...");
-        var current = headnode;
+        var current = headNode;
         while(current is not null)
         {
             // Check the value of the node
