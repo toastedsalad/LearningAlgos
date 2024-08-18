@@ -43,15 +43,11 @@ public class CustomQueue<T>
         dequeingNode.NextNode = null;
         Length--;
 
-        Console.WriteLine(dequeingNode.NodeData.ToString());
-
         return dequeingNode.NodeData; 
     }
 
     public T? Peek()
     {
-        Console.WriteLine(_head.NodeData.ToString());
-
         return _head.NodeData; 
     }
 }
