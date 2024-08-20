@@ -89,6 +89,19 @@ B>C>D>E
 
 Another common operation with queues is "peek" which would return the value of the head element without actually popping it.
 
+## Stack
+
+The second structure based on a linked list a stack. The stack is a FILO structure, that is first in last out. 
+The most recent elements included in the stack will be the first ones to exit.
+
+You can think about the queue as Queue in reverse:
+
+A<B<C<D<E
+
+Then when you pop the stack, you simply remove the latest or "last" in our case element.
+
+A<B<C<D
+
 # Algos: search
 ## Binary Search
 

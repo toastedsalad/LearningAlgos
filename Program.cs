@@ -18,28 +18,18 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var node1 = new Node<int>(1);
-            // How can I make a function to insert things into a linked list?
-            var node2 = new Node<int>(2);
-            var node3 = new Node<int>(3);
-            var node6 = new Node<int>(6);
+            var myStack = new CustomStack<int>();
 
-            var myqueue = new CustomQueue<int>();
-            myqueue.Enqueue(node1);
+            myStack.Add(1); 
+            myStack.Add(3); 
+            myStack.Add(4); 
+            myStack.Add(5); 
+            myStack.Add(6); 
+            myStack.Add(7);
 
-            CustomQueueHelpers<int>.PrintLinkedList(node1);
-
-            myqueue.Enqueue(node2);
-            myqueue.Enqueue(node3);
-            myqueue.Enqueue(node6);
-
-            CustomQueueHelpers<int>.PrintLinkedList(node1);
-
-            Console.WriteLine(myqueue.Deque());
-             
-            CustomQueueHelpers<int>.PrintLinkedList(node1);
-            CustomQueueHelpers<int>.PrintLinkedList(node2);
-
+            CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
+            myStack.Pop();
+            CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
 
             // var myArray = ArrayGenerator.GenerateArray(10);
             // Console.WriteLine(string.Join(", ", myArray));
