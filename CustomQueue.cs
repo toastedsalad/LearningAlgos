@@ -16,7 +16,7 @@ public class CustomQueue<T>
 
     public void Enqueue(Node<T> item)
     {
-        if(Length == 0)
+        if (Length == 0)
         {
             _head = item;
             _tail = _head;
@@ -32,7 +32,7 @@ public class CustomQueue<T>
 
     public T? Deque()
     {
-        if(_head is null)
+        if (_head is null)
         {
             return default(T);
         }
@@ -43,12 +43,12 @@ public class CustomQueue<T>
         dequeingNode.NextNode = null;
         Length--;
 
-        return dequeingNode.NodeData; 
+        return dequeingNode.NodeData;
     }
 
     public T? Peek()
     {
-        return _head.NodeData; 
+        return _head.NodeData;
     }
 }
 
@@ -62,7 +62,7 @@ public class Node<T>
         NodeData = nodeData;
         NextNode = nextNode;
     }
-}    
+}
 
 
 public static class CustomQueueHelpers<T>
@@ -71,7 +71,7 @@ public static class CustomQueueHelpers<T>
     {
         Console.WriteLine("Printing linked list...");
         var temp = headNode;
-        while(temp is not null)
+        while (temp is not null)
         {
             Console.WriteLine(temp.NodeData);
             temp = temp.NextNode;
