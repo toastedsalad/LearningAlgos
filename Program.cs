@@ -18,18 +18,24 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var myStack = new CustomStack<int>();
+            CustomDicts.CanIWriteToConsole();
+            var myDict = new CustomDicts();
+            myDict.AddKeyValue("AlgoStudent1", "G");
+            myDict.AddKeyValue("AlgoStudent2", "Ansis");
+            // var myStack = new CustomStack<int>();
 
-            myStack.Add(1); 
-            myStack.Add(3); 
-            myStack.Add(4); 
-            myStack.Add(5); 
-            myStack.Add(6); 
-            myStack.Add(7);
+            myDict.GetValueByKey("AlgoStudent1");
+            myDict.GetValueByKey("AlgoStudent2");
+            // myStack.Add(1); 
+            // myStack.Add(3); 
+            // myStack.Add(4); 
+            // myStack.Add(5); 
+            // myStack.Add(6); 
+            // myStack.Add(7);
 
-            CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
-            myStack.Pop();
-            CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
+            // CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
+            // myStack.Pop();
+            // CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
 
             // var myArray = ArrayGenerator.GenerateArray(10);
             // Console.WriteLine(string.Join(", ", myArray));
