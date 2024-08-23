@@ -33,16 +33,12 @@ public class RomanInt
             }
             var intTwo = romanRumeral[s[indexTwo].ToString()];
             
-            if (intOne > intTwo)
-            {
-                result += intOne;
-            }
-            else if (intOne < intTwo)
+            if (intOne < intTwo)
             {
                 result += intTwo - intOne;
                 i++;
             }
-            else if (intOne == intTwo)
+            else
             {
                 result += intOne;
             }
