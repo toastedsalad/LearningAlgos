@@ -72,9 +72,9 @@ public class TwoSum
         // Translate the original array into a dict
         // Take the int as the key
         // Take the position as value
-        for(int i = 0; i < nums.Length; i++)
+        for (int i = 0; i < nums.Length; i++)
         {
-            if(occurances.ContainsKey(nums[i]))
+            if (occurances.ContainsKey(nums[i]))
             {
                 occurances[nums[i]]++;
             }
@@ -86,7 +86,7 @@ public class TwoSum
 
         // Once we have occurances we can check if the number is divisible by two
         // If it is, we can look for two occurances of the quotient. 
-        if(target % 2 == 0)
+        if (target % 2 == 0)
         {
             var divided = target/2;
             if(occurances.ContainsKey(divided) && occurances[divided] > 1)

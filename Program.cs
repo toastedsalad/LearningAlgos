@@ -18,13 +18,14 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var myDict = new CustomDicts();
-            myDict.AddKeyValue("AlgoStudent1", "G");
-            myDict.AddKeyValue("AlgoStudent2", "Ansis");
-            // var myStack = new CustomStack<int>();
+            RomanInt.RomanToInt("XV");
+            // var myDict = new CustomDicts();
+            // myDict.AddKeyValue("AlgoStudent1", "G");
+            // myDict.AddKeyValue("AlgoStudent2", "Ansis");
+            // // var myStack = new CustomStack<int>();
 
-            myDict.GetValueByKey("AlgoStudent1");
-            myDict.GetValueByKey("AlgoStudent2");
+            // myDict.GetValueByKey("AlgoStudent1");
+            // myDict.GetValueByKey("AlgoStudent2");
             // myStack.Add(1); 
             // myStack.Add(3); 
             // myStack.Add(4); 
