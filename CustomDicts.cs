@@ -23,7 +23,7 @@ public class CustomDicts
     {
         // First we need a hashcode of the key;
         uint keyHash = (uint)key.GetHashCode();
-        Console.WriteLine($"This is the hash of the key {keyHash.ToString()}");
+        Console.WriteLine($"This is the hash of the key {key} {keyHash}");
 
         // Get modulo of the hash divided by the length of an bucketList.
         // This little math trick ensures that the value we get is within the length of the array.
@@ -37,17 +37,10 @@ public class CustomDicts
     public void GetValueByKey(string key)
     {
         uint keyHash = (uint)key.GetHashCode();
-        Console.WriteLine($"This is the hash of the key we are retrieving {keyHash.ToString()}");
+        Console.WriteLine($"This is the hash of the key {key} that we are retrieving {keyHash}");
 
         uint bucket = (uint)(keyHash % bucketList.Length);
         
         Console.WriteLine($"The value at key {key} is: {bucketList[bucket]}");
-    }
-
-
-    public static void CanIWriteToConsole()
-    {
-        Console.WriteLine("How do I execute this blin");
-        Console.WriteLine("Yes, I can!");
     }
 }

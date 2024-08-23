@@ -18,7 +18,6 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            CustomDicts.CanIWriteToConsole();
             var myDict = new CustomDicts();
             myDict.AddKeyValue("AlgoStudent1", "G");
             myDict.AddKeyValue("AlgoStudent2", "Ansis");
