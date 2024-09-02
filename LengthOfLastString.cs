@@ -8,19 +8,17 @@ public class LengthOfLastString{
         var wordLength = 0;
 
         var i = s.Length - 1;
-        for(; i > 0 ; i--){
+        for(; i >= 0 ; i--){
             // Check if it is space, if so then continue;
             if(s[i] == ' '){
                 continue;
             }
             else{
-                for(; i > 0; i--){
-                    if(s[i] != ' '){
-                        wordLength++;
-                    }
-                    else{
+                for(; i >= 0; i--){
+                    if(s[i] == ' '){
                         return wordLength;
                     }
+                    wordLength++;
                 }
             }
         } 
