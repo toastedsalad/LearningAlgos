@@ -18,8 +18,10 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
+            string[] operations = {"5","2","C","D","+"};
+            BaseBall.CallPoints(operations); 
             // RomanInt.RomanToInt("MCMXCIV");
-            var myDict = new CustomDicts();
+            // var myDict = new CustomDicts();
             // myDict.AddKeyValue("AlgoStudent1", "G");
             // myDict.AddKeyValue("AlgoStudent2", "Ansis");
             // // var myStack = new CustomStack<int>();
