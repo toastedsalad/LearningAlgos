@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using BenchmarkDotNet.Running;
 
 namespace LearningAlgos
 {
@@ -18,8 +19,12 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            string[] operations = {"5","2","C","D","+"};
-            BaseBall.CallPoints(operations); 
+            var summary = BenchmarkRunner.Run<ArrayVsDict>();
+            // var arr = new ArrayVsDict();
+            // arr.GetElementFromArray();
+
+            // string[] operations = {"5","2","C","D","+"};
+            // BaseBall.CallPoints(operations); 
             // RomanInt.RomanToInt("MCMXCIV");
             // var myDict = new CustomDicts();
             // myDict.AddKeyValue("AlgoStudent1", "G");
