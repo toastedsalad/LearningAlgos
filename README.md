@@ -102,6 +102,71 @@ Then when you pop the stack, you simply remove the latest or "last" in our case 
 
 A<B<C<D
 
+## Array vs Linked List
+* Usability
+    * Arrays 
+Give access by index. Very easy to set and get values.
+Easy to understand what is happening on the computer itself.
+Simple memory allocation. But you have to allocate it all upfront.
+One of the problems is that you don't have inserts. You have to do additional work to shift the array.
+Time complexity is easy to understand as well.
+
+    * Linked List
+Only uses the memory it needs - memory becomes dynamically managed.
+You can optimes a linked list to reuse nodes - there are ways to speed things up.
+Here you can't get just the value by key, you must always traverse.
+It's always a linear search. You can't just hop into the middle.
+So not great for random access but very nice for pushing and popping.
+
+## ArrayList
+Can we do better? Can we have an array access with ability to grow?
+So this is just a 'List<T>'. I think List in .net has an array as an underlying stucture
+and operation to manage it are abstracter from the user.
+```
+ 1   3
+[2, , ]
+```
+Here we have an array that can store three items.
+We can track it's current length L which is 1 currently.
+And when can also know it's capacity C which is 3 in total.
+
+Knowing these two items we can perform push operations on an array.
+```
+ 1   3
+[2,3, ]
+```
+
+Since we know the index, the push operation will be contstant time.
+It's the same with pop.
+
+What happens with push, when we exceed capacity?
+We create a new array with bigger capacity and copy the values.
+
+What about Queue operations? Can we enqueue and deque?
+Say we have this data array and want to enque an item.
+```
+[2,3,5]
+```
+First we have to grow our capacity:
+```
+[2,3,5, ]
+```
+And now we have enough room to enqueue a new item.
+But first we need to shift our items to the right. 
+```
+[ ,2,3,5]
+```
+Once that is done we can enqueue our new value:
+```
+[1,2,3,5]
+```
+This is not very efficient it's O(n). And usually not a way to go about this. 
+
+So this sort thing is good with push and pop but not that great with enqueue.
+
+Similar with deletions and insertions. You would have to shift everything to one
+side or the other.
+
 # Algos: search
 ## Binary Search
 

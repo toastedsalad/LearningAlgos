@@ -18,28 +18,36 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var myposition = ReturnToOrigin.JudgeCircle("UD");
+            // var myposition = ReturnToOrigin.JudgeCircle("UD");
             // string[] operations = {"5","2","C","D","+"};
             // BaseBall.CallPoints(operations); 
             // RomanInt.RomanToInt("MCMXCIV");
             // var myDict = new CustomDicts();
             // myDict.AddKeyValue("AlgoStudent1", "G");
             // myDict.AddKeyValue("AlgoStudent2", "Ansis");
-            // // var myStack = new CustomStack<int>();
 
             // myDict.GetValueByKey("AlgoStudent1");
             // myDict.GetValueByKey("AlgoStudent2");
-            // myStack.Add(1); 
-            // myStack.Add(3); 
-            // myStack.Add(4); 
-            // myStack.Add(5); 
-            // myStack.Add(6); 
-            // myStack.Add(7);
+            // var myStack = new CustomStack<int>();
+            // myStack.Push(1); 
+            // myStack.Push(3); 
+            // myStack.Push(4); 
+            // myStack.Push(5); 
+            // myStack.Push(6); 
+            // myStack.Push(7);
 
             // CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
             // myStack.Pop();
+            // Console.WriteLine($"Peeking the stack {myStack.Peek().ToString()}");
             // CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
-
+            // myStack.Pop();
+            // Console.WriteLine($"Peeking the stack {myStack.Peek().ToString()}");
+            // CustomStackHelpers<int>.PrintLinkedList(myStack._tail);
+            // Console.WriteLine(myStack.Size.ToString());
+            // myStack.Pop();
+            // myStack.Pop();
+            // myStack.Pop();
+            // Console.WriteLine(myStack.Size.ToString());
             // var myArray = ArrayGenerator.GenerateArray(10);
             // Console.WriteLine(string.Join(", ", myArray));
 
