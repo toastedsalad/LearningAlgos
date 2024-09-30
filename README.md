@@ -145,20 +145,20 @@ We create a new array with bigger capacity and copy the values.
 What about Queue operations? Can we enqueue and deque?
 Say we have this data array and want to enque an item.
 ```
-[2,3,5]
+[3,2,1]
 ```
 First we have to grow our capacity:
 ```
-[2,3,5, ]
+[3,2,1, ]
 ```
 And now we have enough room to enqueue a new item.
 But first we need to shift our items to the right. 
 ```
-[ ,2,3,5]
+[ ,3,2,1]
 ```
 Once that is done we can enqueue our new value:
 ```
-[1,2,3,5]
+[4,3,2,1]
 ```
 This is not very efficient it's O(n). And usually not a way to go about this. 
 
@@ -166,6 +166,42 @@ So this sort thing is good with push and pop but not that great with enqueue.
 
 Similar with deletions and insertions. You would have to shift everything to one
 side or the other.
+
+## Ring/Array Buffers
+I don't even know what these are.
+Okay so in the array list we our tail and head are at the start and end of the
+array, but in the array buffer head and tail can have their own custom indexes.
+
+```
+    h     t
+[1, 2, 3, 4, 5]
+```
+And here to remove an item for our array buffer we would just h+1.
+```
+       h  t
+[1, 2, 3, 4, 5]
+```
+Same thing with the tail. If you wanted to add something to the tail - just t+1.
+```
+       h     t 
+[1, 2, 3, 4, 5]
+```
+Pushing and popping here are all O(1) operations.
+And you may think that you can go out of bounds with the tail or head.
+But this is why it is called a ring buffer, you go around the ends of the array.
+
+It somehow works with doing modulo on the tail: tail % len, gives you the index into the array.
+Okay so we take modulo len to ensure that the tail is within bounds. Within len.
+This sort of structure could result in tail being before head when imagining a flat array.
+
+The problems begin when your tail EXCEEDS the head. That means you need to resize.
+Resizing is tricky. When you try to insert at tail and you notice that the tail is at head, 
+you need to go around the ring adding all elements in the new, larger array.
+
+One implementation for it can ge a log batcher?
+It's a services that batches logs and writes logs.
+Logs need to maintain order and while you're writing logs, new logs have to be able to come in.
+Yeah, thats a bit unclear to my how this is good application for ring buffers.
 
 # Algos: search
 ## Binary Search
