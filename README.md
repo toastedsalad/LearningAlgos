@@ -284,6 +284,10 @@ And we keep going until we have only one element in the array.
 And the array of one element is always sorted.
 
 What is the time complexity of this sort?
+```
+       h  t
+[1, 2, 3, 4, 5]
+```
 Well one fact we can state is that our array decreases by one on each run.
 On the first run the number of comparissons we have to do is: (N-1).
 On the second run: (N-2).
