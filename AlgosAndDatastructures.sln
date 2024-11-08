@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAlgos", "Algos\LearningAlgos.csproj", "{6EAFDD96-369D-4F30-A2DC-8F73532FAC7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgosTests", "AlgosTests\AlgosTests.csproj", "{0E34A875-6160-4D9A-BF51-10E721ACFFAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EAFDD96-369D-4F30-A2DC-8F73532FAC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EAFDD96-369D-4F30-A2DC-8F73532FAC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EAFDD96-369D-4F30-A2DC-8F73532FAC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EAFDD96-369D-4F30-A2DC-8F73532FAC7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E34A875-6160-4D9A-BF51-10E721ACFFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E34A875-6160-4D9A-BF51-10E721ACFFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E34A875-6160-4D9A-BF51-10E721ACFFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E34A875-6160-4D9A-BF51-10E721ACFFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
