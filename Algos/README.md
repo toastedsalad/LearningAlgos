@@ -169,7 +169,7 @@ side or the other.
 
 ## Ring/Array Buffers
 I don't even know what these are.
-Okay so in the array list we our tail and head are at the start and end of the
+Okay so in the array list our tail and head are at the start and end of the
 array, but in the array buffer head and tail can have their own custom indexes.
 
 ```
@@ -310,9 +310,12 @@ We unpack it to N^2 + N.
 And then we drop the insignificant + N. Simply because N^2 will be so much bigger than N.
 And what we're left with is O(N^2).
 
-# Is this an algo or is this a datastructure?
+# Recursion
 
-A linked list. Is data structure itself but it also implies a certain way of managing the data.
+It's something that keeps on calling itself over and over.
+It's a function that calls itself until the problem is resolved.
+This usually involves a base case. A base case is the point in which the problem is solved at.
+At this point the function no longer calls itself and is able to return a value or do something final.
 
 
 
