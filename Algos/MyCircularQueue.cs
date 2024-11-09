@@ -14,28 +14,28 @@ namespace LearningAlgos{
         }
 
         public bool EnQueue(int value) {
-
+            return true;
         }
 
         public bool DeQueue() {
-
+            return true;
         }
 
         public int Front() {
-            return k[frontIndex];
+            return circularArray[frontIndex];
             // And if it is empty, we need to return -1.
         }
 
         public int Rear() {
-
+            return 0;
         }
 
         public bool IsEmpty() {
-
+            return true;
         }
 
         public bool IsFull() {
-
+            return true;
         }
     }
 

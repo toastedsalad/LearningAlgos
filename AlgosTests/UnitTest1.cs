@@ -1,22 +1,26 @@
-namespace AlgosTests;
+using LearningAlgos;
 
-public class Tests{
-    [SetUp]
-    public void Setup(){
-    }
+namespace AlgosTests{
+    public class Tests{
+        [SetUp]
+        public void Setup(){
+        }
 
-    [Test]
-    public void NewArrayRetursnEmpty(){
-        var queue = new MyCircularQueue();
-        var front = queue.Front()
-            Assert.That(front isEqual(-1));
-    }
+        [Test]
+        public void NewArrayRetursnEmpty(){
+            // Randomize the argument? So that it isn't always one?
+            var queue = new MyRingBuffer(1);
+            var front = queue.Front();
+            Assert.That(front, Is.EqualTo(-1));
+        }
 
-    [Test]
-    public void EmptyReturnMinusOne()
-    {
-        var queue = new MyCircularQueue();
-        var empty = queue.IsEmpty();
-        Assert.That(empty isEqual(true));
+        [Test]
+        public void EmptyReturnMinusOne()
+        {
+            var queue = new MyRingBuffer(1);
+            var empty = queue.IsEmpty();
+            Assert.That(empty, Is.EqualTo(true));
+        }
     }
 }
+
