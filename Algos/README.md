@@ -317,48 +317,24 @@ It's a function that calls itself until the problem is resolved.
 This usually involves a base case. A base case is the point in which the problem is solved at.
 At this point the function no longer calls itself and is able to return a value or do something final.
 
+That's an example of recursion.
+This is the sum of all the numbers in a number.
+You can solve this with a gausian formula but here we recurse.
+```
+namespace LearningAlgos {
+    public class Subtractor {
+        public static int SubtractUntilOne(int n) {
+            // Base Case:
+            if (n == 1) {
+                return 1;
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            // Rescurse
+            return n + SubtractUntilOne(n - 1);
+        }
+    }
+}
+```
 
 
 

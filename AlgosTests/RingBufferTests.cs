@@ -3,11 +3,11 @@ using LearningAlgos;
 namespace AlgosTests{
     public class Tests{
         [SetUp]
-        public void Setup(){
+        public void Setup() {
         }
 
         [Test]
-        public void NewArrayRetursnEmpty(){
+        public void NewArrayRetursnEmpty() {
             // Randomize the argument? So that it isn't always one?
             var queue = new MyRingBuffer(1);
             var front = queue.Front();
@@ -15,8 +15,7 @@ namespace AlgosTests{
         }
 
         [Test]
-        public void EmptyReturnMinusOne()
-        {
+        public void EmptyReturnMinusOne(){
             var queue = new MyRingBuffer(1);
             var empty = queue.IsEmpty();
             Assert.That(empty, Is.EqualTo(true));
