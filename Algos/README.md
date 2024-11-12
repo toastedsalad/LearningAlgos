@@ -312,6 +312,7 @@ And what we're left with is O(N^2).
 
 # Recursion
 
+## Basic Example. Maybe easy maybe not so easy.
 It's something that keeps on calling itself over and over.
 It's a function that calls itself until the problem is resolved.
 This usually involves a base case. A base case is the point in which the problem is solved at.
@@ -321,21 +322,126 @@ That's an example of recursion.
 This is the sum of all the numbers in a number.
 You can solve this with a gausian formula but here we recurse.
 ```
-namespace LearningAlgos {
-    public class Subtractor {
-        public static int SubtractUntilOne(int n) {
-            // Base Case:
-            if (n == 1) {
-                return 1;
-            }
-
-            // Rescurse
-            return n + SubtractUntilOne(n - 1);
-        }
+public static int Foo(int n) {
+    // Base Case:
+    if (n == 1) {
+        return 1;
     }
+
+    // Recurse
+    return n + Foo(n - 1);
 }
 ```
 
+To understand recursion it is useful to understand these three things about functions.
+Each function usually has:
+
+rA - return address, this is where the function returns its value.
+rV - return value, this is the actual value that it is returning.
+A - our arguments, input for the function.
+
+Let's walk through our recursive function and understand what happens.
+
+When we initially call foo(5) our return address is something. 
+It goes somewhere to the caller. We will mark it liket this <-.
+And we don't really know our return value at this moment. 
+The only thing we know, is that it is 5+
+And our argument is 5. Heres our initial iteration.
+
+```
+         rA      rV       A
+foo(5)   <-      5+       5
+foo(4)
+foo(3)
+foo(2)
+foo(1)
+```
+
+Let's walk through code. Is it 1? No.
+Then we go the return where we kick off another iteration with foo(4).
+Where is foo(4) pointing to? It is pointing to foo(5), we'll mark it as ^.
+
+```
+         rA      rV       A
+foo(5)   <-      5+       5
+foo(4)   ^       4+       4
+foo(3)
+foo(2)
+foo(1)
+```
+
+We repeat this process until our base case.
 
 
+```
+         rA      rV       A
+foo(5)   <-      5+       5
+foo(4)   ^       4+       4
+foo(3)   ^       3+       3
+foo(2)   ^       2+       2
+foo(1)   ^       1        1
+```
 
+When our A is 1 we hit the base case. We solved the recursion and we return 1.
+This return doesn't have a function call to it self - the recursion is complete.
+Now the return values will go back up the chain. Back to each rA of each run until we return to the caller.
+It happens in this order:
+
+```
+Return order:             rA      rV        A
+      g          foo(5)   <-      5+10      5
+      4          foo(4)   ^       4+6       4
+      3          foo(3)   ^       3+3       3
+      2          foo(2)   ^       2+1       2
+      1          foo(1)   ^       1         1
+```
+
+The last return will pass 15 to the caller.
+You can visual recursion well by throwint at base case:
+
+```
+Unhandled exception. System.Exception: Exception of type 'System.Exception' was thrown.
+   at Foo(Int32 n) in RecursionEx1.cs:line 8
+   at Foo(Int32 n) in RecursionEx1.cs:line 10
+   at Foo(Int32 n) in RecursionEx1.cs:line 10
+   at Foo(Int32 n) in RecursionEx1.cs:line 10
+   at Foo(Int32 n) in RecursionEx1.cs:line 10
+   at LearningAlgos.Program.Main(String[] args) in Program.cs:line 21
+```
+Notice how we initially throw at line 8 and then go back throuh return addresses to the original caller,
+throwing at each iteration in the stack trace. Notice how line numbers for recursive calls are the same.
+
+So, first we went downwards all the calls and then we went upwards once we hit the base case.
+It's improtatnt to understand this pathing, it unlocks some functionality for us.
+There are three steps to recursion.
+
+1. pre: this is our n+, a step before we dive into recursion.
+2. recurse: the call to itself.
+3. post: upwards return. Here when we went upwards we could for example log it steps before returning.
+This pathing is important to understand and may unlock some options for your solutions.
+
+To understand the post step better we can illustrate it by modifying our code like this:
+```
+public static int SubtractUntilOne(int n) {
+    // Base Case:
+    if (n == 1) {
+        Console.WriteLine($"Post step output log: {n}");
+        return 1;
+    }
+
+    var result = n + SubtractUntilOne(n - 1);
+    Console.WriteLine($"Post step output log: {n}");
+    return result;
+}
+```
+
+This will be output the value of n in the upwards direction:
+```
+Post step output log: 1
+Post step output log: 2
+Post step output log: 3
+Post step output log: 4
+Post step output log: 5
+```
+
+Recursion is prevalent in tree and graph algorithms.

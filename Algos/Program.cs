@@ -18,7 +18,7 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var recursionResult = Subtractor.SubtractUntilOne(10);
+            var recursionResult = Subtractor.SubtractUntilOne(5);
             Console.WriteLine($"Recursion result: {recursionResult}");
             // var myposition = ReturnToOrigin.JudgeCircle("UD");
             // string[] operations = {"5","2","C","D","+"};
