@@ -18,8 +18,8 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var recursionResult = Subtractor.SubtractUntilOne(5);
-            Console.WriteLine($"Recursion result: {recursionResult}");
+            // var fac = KthFactor.GetKthFactor(7, 2);
+            // Console.WriteLine(fac);
             // var myposition = ReturnToOrigin.JudgeCircle("UD");
             // string[] operations = {"5","2","C","D","+"};
             // BaseBall.CallPoints(operations); 
