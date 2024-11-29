@@ -1,3 +1,5 @@
+using System;
+
 namespace LearningAlgos{
     public class MyRingBuffer {
         private int[] circularArray;
@@ -31,7 +33,10 @@ namespace LearningAlgos{
         }
 
         public int Rear() {
-            return 0;
+            if (IsEmpty()) {
+                return -1;
+            }
+            return circularArray[rearIndex];
         }
 
         public bool IsEmpty() {
@@ -44,10 +49,16 @@ namespace LearningAlgos{
         }
 
         public bool IsFull() {
-            //  t  h  
-            // [1, 2, 3]
+            //  h        t       4 % 5 = 1
+            // [1, 2, 3, 4]
             // if tail + 1 is head then array is full
-            return true;
+            // if we enque and the resulting index is head then the queu is full
+            //
+            //     t  h          4 % 5 = 1
+            // [1, 2, 3, 4]
+            
+            var size = Math.Abs(rearIndex - frontIndex);
+            return size == circularArray.Length;
         }
     }
 
@@ -61,6 +72,16 @@ namespace LearningAlgos{
      * bool param_5 = obj.IsEmpty();
      * bool param_6 = obj.IsFull();
      */
+
+    /**
+    MyCircularQueue(k) Initializes the object with the size of the queue to be k.
+    int Front() Gets the front item from the queue. If the queue is empty, return -1.
+    int Rear() Gets the last item from the queue. If the queue is empty, return -1.
+    boolean enQueue(int value) Inserts an element into the circular queue. Return true if the operation is successful.
+    boolean deQueue() Deletes an element from the circular queue. Return true if the operation is successful.
+    boolean isEmpty() Checks whether the circular queue is empty or not.
+    boolean isFull() Checks whether the circular queue is full or not.
+    */
 }
 
 

@@ -48,18 +48,39 @@ namespace AlgosTests{
         }
 
         [Test]
-        public void EmptyBufferReturnsIsEmptyTrue(){
+        public void EmptyBufferReturnsIsEmptyTrue() {
             var queue = new MyRingBuffer(1);
             var empty = queue.IsEmpty();
             Assert.That(empty, Is.EqualTo(true));
         }
 
         [Test]
-        public void IsEmptyReturnsFalseWhenArrayIsNotEmpty(){
+        public void IsEmptyReturnsFalseWhenArrayIsNotEmpty() {
             var queue = new MyRingBuffer(2);
             queue.EnQueue(someValue);
             var empty = queue.IsEmpty();
             Assert.That(empty, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void CircularBufferIsFull() {
+            var queue = new MyRingBuffer(3);
+            queue.EnQueue(someValue);
+            queue.EnQueue(someValue);
+            queue.EnQueue(someValue);
+
+            var isFull = queue.IsFull();
+            Assert.That(isFull, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void CircularBufferIsFullReturnsFalseWhenNotFull() {
+            var queue = new MyRingBuffer(3);
+            queue.EnQueue(someValue);
+            queue.EnQueue(someValue);
+
+            var isFull = queue.IsFull();
+            Assert.That(isFull, Is.EqualTo(false));
         }
     }
 }
