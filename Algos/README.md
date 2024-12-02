@@ -445,3 +445,54 @@ Post step output log: 5
 ```
 
 Recursion is prevalent in tree and graph algorithms.
+Regex is just a graph underneath a hood.
+
+## Another Example. Should be easier to understand.
+
+We will be working on a maze solver.
+
+The input is a sting array like this where:
+/# - walls
+E - ending, where we want to get to
+S - start position
+
+```
+[
+"##########E#",
+"#          #",
+"# ##########",
+"#          #",
+"########## #",
+"#          #",
+"#S##########",
+]
+```
+How are we gonna solve this? You know the anser, it's recursion.
+Let's think about this. What can we do at any one square?
+1. We can go UP.
+2. We can go RIGHT.
+3. We can go DOWN.
+4. We can go LEFT.
+
+But we can't always do them
+1. Sometimes we can bump into walls.
+2. We can go off the graph... If in our start position we go doen we're out of 
+3. We could also go to a spot we've seen before. But this would be pretty bad 
+we could get stuck between squares indefinitely.
+
+All these three are our base case. We don't check for them in our recursive case.
+So to rephrase, our base case:
+1. Off the map.
+2. It's a wall.
+3. It's the end.
+4. We have seen it.
+
+Recursive step/case:
+1. Check every direction, go to every direction in the square.
+
+When to use recursion? 
+When it's not solvable via a for loop.
+There is no defined end.
+There's branching involved.
+
+
