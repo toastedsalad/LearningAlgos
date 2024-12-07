@@ -19,7 +19,9 @@ public class MyRingBuffer {
         if (IsFull()) {
             return false;
         }
-
+        // Move rear by one. 
+        // But I think below we shoud move and then assign.
+        // This way rear returns the rear value instead of an empty slot.
         circularArray[rearIndex] = value;
         rearIndex = (rearIndex + 1) % circularArray.Length;
         return true;
@@ -45,6 +47,8 @@ public class MyRingBuffer {
     }
 
     public bool IsEmpty() {
+        // I think we should manage capacity and usage 
+        // with private fields instead of relying on index positions.
         if (frontIndex == rearIndex) {
             return true;
         }
@@ -62,7 +66,7 @@ public class MyRingBuffer {
         //     t  h          4 % 5 = 1
         // [1, 2, 3, 4]
 
-        if ((rearIndex + 1) % circularArray.Length == frontIndex) {
+        if ((rearIndex) % circularArray.Length == frontIndex) {
             return true;
         }
 
