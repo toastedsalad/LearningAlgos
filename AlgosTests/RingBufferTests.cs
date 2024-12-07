@@ -22,6 +22,41 @@ namespace AlgosTests{
         }
 
         [Test]
+        public void WhenCapacityIsFullEnqueueReturnsFalse() {
+            //  ht 
+            // [ , , ]
+            var queue = new MyRingBuffer(3);
+            //
+            //  h   t
+            // [1,2,3]
+            Assert.That(queue.EnQueue(someValue), Is.True);
+            Assert.That(queue.EnQueue(someValue), Is.True);
+            Assert.That(queue.EnQueue(someValue), Is.True);
+            // Try enqueu at full capacity
+            Assert.That(queue.EnQueue(someValue), Is.False);
+        }
+
+        [Test]
+        public void EnqueWorkInACircularWay() {
+            //  ht 
+            // [ , , ]
+            var queue = new MyRingBuffer(3);
+            //
+            //  h   t
+            // [1,2,3]
+            Assert.That(queue.EnQueue(someValue), Is.True);
+            Assert.That(queue.EnQueue(someValue), Is.True);
+            Assert.That(queue.EnQueue(someValue), Is.True);
+            //     ht
+            // [1,2,3]
+            Assert.That(queue.DeQueue(), Is.True);
+            Assert.That(queue.DeQueue(), Is.True);
+            //  t   h
+            // [4,5,3]
+            Assert.That(queue.EnQueue(someValue), Is.True);
+        }
+
+        [Test]
         public void DequeRemovesFrontAndReturnsTrue() {
             // Randomize the argument? So that it isn't always one?
             // Assert that after deque the rear is rear - 1
