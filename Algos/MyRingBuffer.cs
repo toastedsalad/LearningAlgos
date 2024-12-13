@@ -6,6 +6,7 @@ public class MyRingBuffer {
     private int[] circularArray;
     private int frontIndex;
     private int rearIndex;
+    private int usageCount;
 
     public MyRingBuffer(int k) {
         // When we initialize we should initialize an array
@@ -13,22 +14,37 @@ public class MyRingBuffer {
         circularArray = new int[k];
         // When we initialize we can set Front and Rear
         frontIndex = rearIndex = 0;
+        usageCount = 0;
     }
 
     public bool EnQueue(int value) {
         if (IsFull()) {
             return false;
         }
+
         // Move rear by one. 
         // But I think below we shoud move and then assign.
         // This way rear returns the rear value instead of an empty slot.
-        circularArray[rearIndex] = value;
+
+        if (IsEmpty()) {
+            circularArray[rearIndex] = value;
+            usageCount++;
+            return true;
+        } 
+
         rearIndex = (rearIndex + 1) % circularArray.Length;
+        circularArray[rearIndex] = value;
+        usageCount++;
         return true;
     }
 
+    // Solve array overflow.
     public bool DeQueue() {
+        if (IsEmpty()) {
+            return false;
+        }
         frontIndex++;
+        usageCount--;
         return true;
     }
 
@@ -43,13 +59,14 @@ public class MyRingBuffer {
         if (IsEmpty()) {
             return -1;
         }
+
         return circularArray[rearIndex];
     }
 
     public bool IsEmpty() {
         // I think we should manage capacity and usage 
         // with private fields instead of relying on index positions.
-        if (frontIndex == rearIndex) {
+        if (usageCount == 0) {
             return true;
         }
         //        ht
@@ -66,7 +83,7 @@ public class MyRingBuffer {
         //     t  h          4 % 5 = 1
         // [1, 2, 3, 4]
 
-        if ((rearIndex) % circularArray.Length == frontIndex) {
+        if (usageCount == circularArray.Length) {
             return true;
         }
 

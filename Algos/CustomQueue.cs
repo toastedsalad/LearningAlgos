@@ -18,7 +18,7 @@ public class CustomQueue<T>{
             _tail = _head;
             Length++;
         }
-        else{
+        else {
             _tail.NextNode = item;
             _tail = item;
             Length++;
