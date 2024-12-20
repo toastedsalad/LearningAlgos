@@ -1,18 +1,14 @@
-using System;
-
 namespace LearningAlgos;
 
 public class MyRingBuffer {
+    // Let's make it thread safe?
     private int[] circularArray;
     private int frontIndex;
     private int rearIndex;
     private int usageCount;
 
     public MyRingBuffer(int k) {
-        // When we initialize we should initialize an array
-        // of size k;
         circularArray = new int[k];
-        // When we initialize we can set Front and Rear
         frontIndex = rearIndex = 0;
         usageCount = 0;
     }
@@ -21,10 +17,6 @@ public class MyRingBuffer {
         if (IsFull()) {
             return false;
         }
-
-        // Move rear by one. 
-        // But I think below we shoud move and then assign.
-        // This way rear returns the rear value instead of an empty slot.
 
         if (IsEmpty()) {
             circularArray[rearIndex] = value;
@@ -43,7 +35,12 @@ public class MyRingBuffer {
         if (IsEmpty()) {
             return false;
         }
-        frontIndex++;
+        
+        if (usageCount == 1) {
+            rearIndex = (rearIndex + 1) % circularArray.Length;
+        }
+
+        frontIndex = (frontIndex + 1) % circularArray.Length;
         usageCount--;
         return true;
     }
@@ -52,6 +49,7 @@ public class MyRingBuffer {
         if (IsEmpty()) {
             return -1;
         }
+
         return circularArray[frontIndex];
     }
 
@@ -64,32 +62,19 @@ public class MyRingBuffer {
     }
 
     public bool IsEmpty() {
-        // I think we should manage capacity and usage 
-        // with private fields instead of relying on index positions.
         if (usageCount == 0) {
             return true;
         }
-        //        ht
-        // [1, 2, 3]
+
         return false;
     }
 
     public bool IsFull() {
-        //  h        t       4 % 5 = 1
-        // [1, 2, 3, 4]
-        // if tail + 1 is head then array is full
-        // if we enque and the resulting index is head then the queu is full
-        //
-        //     t  h          4 % 5 = 1
-        // [1, 2, 3, 4]
-
         if (usageCount == circularArray.Length) {
             return true;
         }
 
         return false;
-        // var size = Math.Abs(rearIndex - frontIndex);
-        // return size == circularArray.Length;
     }
 }
 

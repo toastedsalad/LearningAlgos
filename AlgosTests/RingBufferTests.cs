@@ -59,7 +59,67 @@ namespace AlgosTests{
         }
 
         [Test]
-        public void WhenDequeOverflowsGoAroundTheArray() {
+        public void DequeWorksInACircularWay() {
+            //  ht 
+            // [ , , ]
+            var queue = new MyRingBuffer(3);
+            //
+            //  h   t
+            // [1,2,3]
+            Assert.That(queue.EnQueue(1), Is.True);
+            Assert.That(queue.EnQueue(2), Is.True);
+            Assert.That(queue.EnQueue(3), Is.True);
+            //     ht
+            // [1,2,3]
+            Assert.That(queue.DeQueue(), Is.True);
+            Assert.That(queue.Front(), Is.EqualTo(2));
+            Assert.That(queue.DeQueue(), Is.True);
+            Assert.That(queue.Front(), Is.EqualTo(3));
+            
+            //    t h
+            // [4,5,3]
+            Assert.That(queue.EnQueue(4), Is.True);
+            Assert.That(queue.Rear(), Is.EqualTo(4));
+            Assert.That(queue.EnQueue(5), Is.True);
+            Assert.That(queue.Rear(), Is.EqualTo(5));
+
+            //  h t      
+            // [4,5,3]
+            Assert.That(queue.DeQueue(), Is.True);
+            Assert.That(queue.Front(), Is.EqualTo(4));
+        }
+
+        [Test]
+        public void EnqueAndDequeuWithCapacityOneWorks() {
+            var queue = new MyRingBuffer(1);
+            queue.EnQueue(1);
+            Assert.That(queue.Front(), Is.EqualTo(1));
+            Assert.That(queue.Rear(), Is.EqualTo(1));
+            Assert.That(queue.EnQueue(2), Is.False);
+            Assert.That(queue.DeQueue(), Is.True);
+            Assert.That(queue.IsEmpty(), Is.True);
+        }
+
+        [Test]
+        public void LeetCodeProblem1() {
+            var queue = new MyRingBuffer(81);
+            queue.EnQueue(69);
+            Assert.That(queue.Front(), Is.EqualTo(69));
+            //   fr
+            // [ 69, 0, 0 , 0]
+            //
+            queue.DeQueue();
+            //   r   f
+            // [ 69, 0, 0 , 0]
+            //
+            Assert.That(queue.Front(), Is.EqualTo(-1));
+            Assert.That(queue.IsEmpty(), Is.True);
+            queue.EnQueue(92);
+            Assert.That(queue.Front(), Is.EqualTo(92));
+        }
+
+        [Test]
+        public void WhenEnqueOverflowsGoAroundTheArray() {
             var queue = new MyRingBuffer(3);
             queue.EnQueue(someValue);
             queue.EnQueue(someValue);
@@ -69,7 +129,8 @@ namespace AlgosTests{
             queue.DeQueue();
 
             queue.EnQueue(someValue + 2); // This should be at array[0]
-            Assert.That(queue.Front, Is.EqualTo(someValue + 2));
+            Assert.That(queue.Front, Is.EqualTo(someValue + 1));
+            Assert.That(queue.Rear, Is.EqualTo(someValue + 2));
         }
 
         [Test]

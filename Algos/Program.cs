@@ -18,11 +18,15 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var coor = new int[3][];
-            coor[0] = new int[2] {2, 1}; 
-            coor[1] = new int[2] {4, 2}; 
-            coor[2] = new int[2] {6, 3}; 
-            PointsInStraightLine.CheckStraightLine(coor);
+            var a = "1010";
+            var b = "1011";
+            BinaryAddition.AddBinary(a, b);
+
+            // var coor = new int[3][];
+            // coor[0] = new int[2] {2, 1}; 
+            // coor[1] = new int[2] {4, 2}; 
+            // coor[2] = new int[2] {6, 3}; 
+            // PointsInStraightLine.CheckStraightLine(coor);
 
             // var fac = KthFactor.GetKthFactor(7, 2);
             // Console.WriteLine(fac);
