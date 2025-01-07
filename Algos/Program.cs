@@ -18,9 +18,17 @@ namespace LearningAlgos
     {
         static void Main(string[] args)
         {
-            var a = "1010";
-            var b = "1011";
-            BinaryAddition.AddBinary(a, b);
+            byte[] source = { 1, 2, 3, 4, 5 };
+            byte[] destination = new byte[3];
+
+            // Attempting to copy source to destination
+            source.CopyTo(destination, 0); // Throws System.ArgumentException
+
+            // StringMultiplier.Multiply("123", "4");
+
+            // var a = "1010";
+            // var b = "1011";
+            // BinaryAddition.AddBinary(a, b);
 
             // var coor = new int[3][];
             // coor[0] = new int[2] {2, 1}; 
