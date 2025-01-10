@@ -2,10 +2,11 @@ namespace LearningAlgos;
 
 public class MyRingBuffer {
     // Let's make it thread safe?
-    private int[] circularArray;
+    public int[] circularArray;
     private int frontIndex;
     private int rearIndex;
-    private int usageCount;
+    public int usageCount;
+    public object lockAcquired = new object();
 
     public MyRingBuffer(int k) {
         circularArray = new int[k];
@@ -14,20 +15,23 @@ public class MyRingBuffer {
     }
 
     public bool EnQueue(int value) {
-        if (IsFull()) {
-            return false;
-        }
+        lock(lockAcquired) {
+            if (IsFull()) {
+                return false;
+            }
 
-        if (IsEmpty()) {
+            if (IsEmpty()) {
+                // We still get out of bounds here
+                circularArray[rearIndex] = value;
+                usageCount++;
+                return true;
+            } 
+
+            rearIndex = (rearIndex + 1) % circularArray.Length;
             circularArray[rearIndex] = value;
             usageCount++;
             return true;
-        } 
-
-        rearIndex = (rearIndex + 1) % circularArray.Length;
-        circularArray[rearIndex] = value;
-        usageCount++;
-        return true;
+        }
     }
 
     // Solve array overflow.

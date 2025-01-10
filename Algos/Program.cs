@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningAlgos
 {
@@ -16,13 +17,37 @@ namespace LearningAlgos
     }
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            byte[] source = { 1, 2, 3, 4, 5 };
-            byte[] destination = new byte[3];
+
+            var ringBuffer = new MyRingBuffer(2);
+
+            // Task.Run(() => ringBuffer.EnQueue(6));
+            // Task.Run(() => ringBuffer.EnQueue(6));
+
+            int numTasks = 1000; // Number of concurrent tasks
+            List<Task> tasks = new List<Task>();
+
+            // Create tasks
+            for (int i = 0; i < numTasks; i++)
+            {
+                tasks.Add(Task.Run(() => ringBuffer.EnQueue(i)));
+            }
+
+            // Wait for all tasks to complete
+            await Task.WhenAll(tasks); 
+
+            Console.WriteLine($"Ring buffer usage {ringBuffer.usageCount}");
+
+            for (var i = 0; i < 4; i++) {
+                Console.WriteLine(ringBuffer.circularArray[i]);
+            }
+
+            // byte[] source = { 1, 2, 3, 4, 5 };
+            // byte[] destination = new byte[3];
 
             // Attempting to copy source to destination
-            source.CopyTo(destination, 0); // Throws System.ArgumentException
+            // source.CopyTo(destination, 0); // Throws System.ArgumentException
 
             // StringMultiplier.Multiply("123", "4");
 
