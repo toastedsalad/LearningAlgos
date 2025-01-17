@@ -15,22 +15,19 @@ namespace LearningAlgos
             this.next = next;
         }
     }
+
     class Program
     {
         static async Task Main(string[] args)
         {
-
+            // Ring buffer concurency experiments.
+            //
             var ringBuffer = new MyRingBuffer(2);
-
-            // Task.Run(() => ringBuffer.EnQueue(6));
-            // Task.Run(() => ringBuffer.EnQueue(6));
-
             int numTasks = 1000; // Number of concurrent tasks
             List<Task> tasks = new List<Task>();
 
             // Create tasks
-            for (int i = 0; i < numTasks; i++)
-            {
+            for (int i = 0; i < numTasks; i++) {
                 tasks.Add(Task.Run(() => ringBuffer.EnQueue(i)));
             }
 
@@ -39,7 +36,7 @@ namespace LearningAlgos
 
             Console.WriteLine($"Ring buffer usage {ringBuffer.usageCount}");
 
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 2; i++) {
                 Console.WriteLine(ringBuffer.circularArray[i]);
             }
 
