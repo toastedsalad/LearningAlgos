@@ -1,7 +1,7 @@
 using LearningAlgos;
 
-namespace AlgosTests{
-    public class Tests{
+namespace AlgosTests {
+    public class RingBufferTests {
         const int someValue = 7;
 
         [Test]
