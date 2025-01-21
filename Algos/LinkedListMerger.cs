@@ -22,7 +22,7 @@ public class LinkedListMerger {
         var currentList1 = list1;
         var currentList2 = list2;
 
-        while (currentList1 != null && currentList1 != null) {
+        while (currentList1 != null && currentList2 != null) {
             if (currentList1.val <= currentList2.val) {
                 currentNode.next = currentList1;
                 currentList1 = currentList1.next;
@@ -39,7 +39,8 @@ public class LinkedListMerger {
         if (currentList1 == null) {
             currentNode.next = currentList2;
         }
-        else {
+        
+        if (currentList2 == null) {
             currentNode.next = currentList1;
         }
 
