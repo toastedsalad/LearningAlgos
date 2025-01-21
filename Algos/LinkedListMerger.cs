@@ -44,8 +44,12 @@ public class LinkedListMerger {
             currentNode.next = currentList1;
         }
 
-        // Skip the first node
-        return mergedList.next;
+        // Unlink the first node
+        var finalMerge = mergedList.next;
+        // Let GC deal with the empty first node.
+        mergedList.next = null;
+
+        return finalMerge;
     }
 }
 
