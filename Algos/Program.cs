@@ -20,25 +20,40 @@ namespace LearningAlgos
     {
         static async Task Main(string[] args)
         {
-            // Ring buffer concurency experiments.
-            //
-            var ringBuffer = new MyRingBuffer(2);
-            int numTasks = 1000; // Number of concurrent tasks
-            List<Task> tasks = new List<Task>();
+            var node1 = new ListNode(2);
+            var node2 = new ListNode(4);
+            var node3 = new ListNode(3);
+            node1.next = node2;
+            node2.next = node3;
 
-            // Create tasks
-            for (int i = 0; i < numTasks; i++) {
-                tasks.Add(Task.Run(() => ringBuffer.EnQueue(i)));
-            }
 
-            // Wait for all tasks to complete
-            await Task.WhenAll(tasks); 
+            var nodeA = new ListNode(5);
+            var nodeB = new ListNode(6);
+            var nodeC = new ListNode(4);
+            nodeA.next = nodeB;
+            nodeB.next = nodeC;
+            
+            AddTwoIntsLinkeList.AddTwoNumbers(node1, node2);
 
-            Console.WriteLine($"Ring buffer usage {ringBuffer.usageCount}");
+            // // Ring buffer concurency experiments.
+            // //
+            // var ringBuffer = new MyRingBuffer(2);
+            // int numTasks = 1000; // Number of concurrent tasks
+            // List<Task> tasks = new List<Task>();
 
-            for (var i = 0; i < 2; i++) {
-                Console.WriteLine(ringBuffer.circularArray[i]);
-            }
+            // // Create tasks
+            // for (int i = 0; i < numTasks; i++) {
+            //     tasks.Add(Task.Run(() => ringBuffer.EnQueue(i)));
+            // }
+
+            // // Wait for all tasks to complete
+            // await Task.WhenAll(tasks); 
+
+            // Console.WriteLine($"Ring buffer usage {ringBuffer.usageCount}");
+
+            // for (var i = 0; i < 2; i++) {
+            //     Console.WriteLine(ringBuffer.circularArray[i]);
+            // }
 
             // byte[] source = { 1, 2, 3, 4, 5 };
             // byte[] destination = new byte[3];
