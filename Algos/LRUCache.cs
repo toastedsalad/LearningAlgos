@@ -4,10 +4,12 @@ namespace LearningAlgos;
 
 public class LRUCache {
     private Dictionary<int, int> dict;
+    private Queue<int> _tmpQueue;
     private int _capacity;
 
     public LRUCache(int capacity) {
         dict = new Dictionary<int, int>();
+        _tmpQueue = new Queue<int>();
         _capacity = capacity;
     }
     
@@ -19,13 +21,18 @@ public class LRUCache {
     }
     
     public void Put(int key, int value) {
-        // When we put we need to check if we exceed the capacity
-        // And if we do we need to trigger the eviction process.
-        // How can we be less brutal?
-        // Perhaps an extra data structure to keep track of 
-        // recently touched items.
-        if (dict.Count == _capacity) {
-            dict.Clear();
+        // The problem is that we can't traverse the queue
+        // to manage items in the middle of the queue
+        //
+        // We probably need a LinkedList and then iterate over it.
+        // The Linked List is available in the solution
+        // var LinkedList = new ListNode();
+        
+        _tmpQueue.Enqueue(key);
+ 
+        if (_tmpQueue.Count > _capacity) {
+            var oldestKey = _tmpQueue.Dequeue();
+            dict.Remove(oldestKey);
         }
 
         if (!dict.TryAdd(key, value)) {
@@ -33,4 +40,11 @@ public class LRUCache {
         }
     }
 }
+
+
+
+
+
+
+
 
