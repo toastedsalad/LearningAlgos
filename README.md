@@ -310,6 +310,46 @@ We unpack it to N^2 + N.
 And then we drop the insignificant + N. Simply because N^2 will be so much bigger than N.
 And what we're left with is O(N^2).
 
+## QuickSort
+
+This algo is supposed to be simple. It's simple and brilliant.
+This algo uses a technique of "Divide and Conquer"... Apparently this is an amalagamation 
+of words used quite often in algos. This basically means that we divide our inputs 
+into smaller subsets and then go over them faster.
+
+Think of it like this... An array of one element is always sorted.
+
+0      P N
+[        ]
+P - pivot (random element)
+FR - first runner pointer
+S - scanner pointer 
+
+1. In quicksort we pick any element as the pivot element.
+2. We use the S scanner pointer to go through an array.
+3. We check the element at S.
+4. If the element S is less or equal to P, then we put it in FR position and increment it.
+5. At this point we have an array wher P hangs out in the middle and things 
+lower than P are on the left, while things higher than P are on ther right. This 
+is called a weak sort and there are strategies which leverage this sort structure.
+
+0  <  P  <  N
+[           ]
+
+6. Now we take the positions between 0 and P, and P and N and we repeat the process. 
+Assing new pivots, move items to the sides of the pivots.
+7. So you can see now how by making ranges smaller and smaller with each iteration 
+we will finally arrive at a situation where range is an array of 1 element. At 
+this point we can call it sorted.
+
+It's easier and probabaly more apropriate to image with trees:
+
+                 [0....31]
+                    P=16
+            [0-15]      [17-31]
+              P=8         P=24
+        [0-7]  [9-15]  [17-23]  [25-31]
+
 # Recursion
 
 ## Basic Example. Maybe easy maybe not so easy.
