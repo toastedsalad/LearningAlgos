@@ -11,32 +11,32 @@ public class AddTwoIntsLinkeList {
 
         while (currentl1 != null && currentl2 != null) {
             // 9 + 1 + 0 = 10
-            current.val = currentl1.val + currentl2.val + carry;
+            current.value = currentl1.value + currentl2.value + carry;
             carry = 0;
 
             if (currentl1.next == null && currentl2.next == null) {
-                if (current.val == 10) {
-                    current.val = 0;
+                if (current.value == 10) {
+                    current.value = 0;
                     current.next = new ListNode();
-                    current.next.val = 1;
+                    current.next.value = 1;
                     return addedLL;
                 }
 
-                if (current.val > 10) {
-                    current.val = current.val - 10;
+                if (current.value > 10) {
+                    current.value = current.value - 10;
                     current.next = new ListNode();
-                    current.next.val = 1;
+                    current.next.value = 1;
                     return addedLL;
                 }
             }
 
-            if (current.val == 10) {
-                current.val = 0;
+            if (current.value == 10) {
+                current.value = 0;
                 carry = 1;
             }
 
-            if (current.val > 10) {
-                current.val = current.val - 10;
+            if (current.value > 10) {
+                current.value = current.value - 10;
                 carry = 1;
             }
 

@@ -7,11 +7,11 @@ namespace LearningAlgos
 {
     public class ListNode
     {
-        public int val;
+        public int value;
         public ListNode next;
         public ListNode(int val = 0, ListNode next = null)
         {
-            this.val = val;
+            this.value = val;
             this.next = next;
         }
     }
