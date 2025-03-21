@@ -3,16 +3,14 @@ using System.Collections.Generic;
 namespace LearningAlgos;
 
 public class LRUCache {
-    private Dictionary<int, ListNode> dict;
-    private Queue<int> _tmpQueue;
+    private Dictionary<int, DoublyListNode> dict;
     private int _capacity;
-    private ListNode _head;
-    private ListNode _tail;
+    private DoublyListNode _head;
+    private DoublyListNode _tail;
 
     public LRUCache(int capacity) {
-        dict = new Dictionary<int, ListNode>();
-        _tmpQueue = new Queue<int>();
-        _head = _tail = new ListNode();
+        dict = new Dictionary<int, DoublyListNode>();
+        _head = _tail = new DoublyListNode();
         _capacity = capacity;
     }
     
@@ -24,30 +22,17 @@ public class LRUCache {
     }
     
     public void Put(int key, int value) {
-        // The problem is that we can't traverse the queue
-        // to manage items in the middle of the queue
-        //
-        // We probably need a LinkedList and then iterate over it.
-        // The Linked List is available in the solution
-        // var LinkedList = new ListNode();
-
         if (dict.TryGetValue(key, out var node)) {
+            // TODO: we touched the value but we did not update 
+            // the order of the linked list.
+            // Refer to our drawing.
             node.value = value;
         }
         else {
-            var newNode = new ListNode(value);
+            var newNode = new DoublyListNode(value, null!, _tail);
             dict.Add(key, newNode);
             _tail.next = newNode;
             _tail = newNode;
-        }
-        
-        // We always enqueue...
-        _tmpQueue.Enqueue(key);
-        // We should add values conditionally...
- 
-        if (_tmpQueue.Count > _capacity) {
-            var oldestKey = _tmpQueue.Dequeue();
-            dict.Remove(oldestKey);
         }
 
         // // The value of the dict could be a reference to a linked list node

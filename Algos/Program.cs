@@ -5,6 +5,17 @@ using System.Threading.Tasks;
 
 namespace LearningAlgos
 {
+    public class DoublyListNode {
+        public int value;
+        public DoublyListNode next;
+        public DoublyListNode prev;
+        public DoublyListNode(int val = 0, DoublyListNode next = null!, DoublyListNode prev = null!) {
+            this.value = val;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+
     public class ListNode {
         public int value;
         public ListNode next;
@@ -29,16 +40,16 @@ namespace LearningAlgos
     {
         static async Task Main(string[] args)
         {
-            var node1 = new ListNode(2);
-            var node2 = new ListNode(4);
-            var node3 = new ListNode(3);
+            var node1 = new DoublyListNode(2);
+            var node2 = new DoublyListNode(4);
+            var node3 = new DoublyListNode(3);
             node1.next = node2;
             node2.next = node3;
 
 
-            var nodeA = new ListNode(5);
-            var nodeB = new ListNode(6);
-            var nodeC = new ListNode(4);
+            var nodeA = new DoublyListNode(5);
+            var nodeB = new DoublyListNode(6);
+            var nodeC = new DoublyListNode(4);
             nodeA.next = nodeB;
             nodeB.next = nodeC;
             
@@ -207,10 +218,10 @@ namespace LearningAlgos
             // Space complexity O(n) as we temporarily create a new string to store a copy of the magazine with one less letter.
         }
 
-        public ListNode MiddleNode(ListNode head)
+        public DoublyListNode MiddleNode(DoublyListNode head)
         {
-            ListNode middle = head;
-            ListNode end = head;
+            DoublyListNode middle = head;
+            DoublyListNode end = head;
 
             while (end != null && end.next != null)
             {
