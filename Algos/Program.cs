@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LearningAlgos
-{
+namespace LearningAlgos {
     public class DoublyListNode {
         public int value;
         public DoublyListNode next;
@@ -40,16 +39,16 @@ namespace LearningAlgos
     {
         static async Task Main(string[] args)
         {
-            var node1 = new DoublyListNode(2);
-            var node2 = new DoublyListNode(4);
-            var node3 = new DoublyListNode(3);
+            var node1 = new ListNode(2);
+            var node2 = new ListNode(4);
+            var node3 = new ListNode(3);
             node1.next = node2;
             node2.next = node3;
 
 
-            var nodeA = new DoublyListNode(5);
-            var nodeB = new DoublyListNode(6);
-            var nodeC = new DoublyListNode(4);
+            var nodeA = new ListNode(5);
+            var nodeB = new ListNode(6);
+            var nodeC = new ListNode(4);
             nodeA.next = nodeB;
             nodeB.next = nodeC;
             

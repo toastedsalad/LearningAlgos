@@ -35,7 +35,7 @@ public class LRUCache {
             _tail = newNode;
         }
 
-        // // The value of the dict could be a reference to a linked list node
+        // The value of the dict could be a reference to a linked list node
         // if (!dict.TryAdd(key, value)) {
         //     dict[key] = value;
         // }
