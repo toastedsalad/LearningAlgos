@@ -26,5 +26,8 @@ public class BinaryInOrderTraversal {
         if (root.right != null) {
             Walk(root.right, list);
         }
+
+        // Function call finished we pop this call from the stack
+        // And resume previous execution.
     }
 }
