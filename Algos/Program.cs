@@ -4,12 +4,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LearningAlgos {
-    public class DoublyListNode {
-        public int value;
-        public DoublyListNode next;
-        public DoublyListNode prev;
-        public DoublyListNode(int val = 0, DoublyListNode next = null!, DoublyListNode prev = null!) {
-            this.value = val;
+    public class DoublyListNode<T> {
+        public T valueContainer;
+        public DoublyListNode<T> next;
+        public DoublyListNode<T> prev;
+        public DoublyListNode(T val = default!, DoublyListNode<T> next = null!, DoublyListNode<T> prev = null!) {
+            this.valueContainer = val;
             this.next = next;
             this.prev = prev;
         }
@@ -217,19 +217,19 @@ namespace LearningAlgos {
             // Space complexity O(n) as we temporarily create a new string to store a copy of the magazine with one less letter.
         }
 
-        public DoublyListNode MiddleNode(DoublyListNode head)
-        {
-            DoublyListNode middle = head;
-            DoublyListNode end = head;
+        // public DoublyListNode MiddleNode(DoublyListNode head)
+        // {
+        //     DoublyListNode middle = head;
+        //     DoublyListNode end = head;
 
-            while (end != null && end.next != null)
-            {
-                middle = middle.next;
-                end = end.next.next;
-            }
+        //     while (end != null && end.next != null)
+        //     {
+        //         middle = middle.next;
+        //         end = end.next.next;
+        //     }
 
-            return middle;
-        }
+        //     return middle;
+        // }
 
         public int NumberOfStepsBitWise(int num)
         {

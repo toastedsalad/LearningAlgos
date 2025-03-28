@@ -3,20 +3,20 @@ using System.Collections.Generic;
 namespace LearningAlgos;
 
 public class LRUCache {
-    private Dictionary<int, DoublyListNode> dict;
+    private Dictionary<int, DoublyListNode<(int key, int value)>> dict;
     private int _capacity;
-    private DoublyListNode _head;
-    private DoublyListNode _tail;
+    private DoublyListNode<(int key, int value)> _head;
+    private DoublyListNode<(int key, int value)> _tail;
 
     public LRUCache(int capacity) {
-        dict = new Dictionary<int, DoublyListNode>();
-        _head = _tail = new DoublyListNode();
+        dict = new Dictionary<int, DoublyListNode<(int key, int value)>>();
+        _head = _tail = new DoublyListNode<(int key, int value)>();
         _capacity = capacity;
     }
     
     public int Get(int key) {
         if (dict.TryGetValue(key, out var node)) {
-            return node.value;
+            return node.valueContainer.value;
         }
         return -1;
     }
@@ -26,13 +26,29 @@ public class LRUCache {
             // TODO: we touched the value but we did not update 
             // the order of the linked list.
             // Refer to our drawing.
-            node.value = value;
-        }
-        else {
-            var newNode = new DoublyListNode(value, null!, _tail);
+            var current = node;
+            var previous = current.prev;
+            previous.next = current.next;
+            _tail.next = node;
+            _tail = node;
+            node.valueContainer.value = value;
+        } else {
+            var newValue = (key, value);
+            var newNode = new DoublyListNode<(int key, int value)>(newValue, null!, _tail);
             dict.Add(key, newNode);
             _tail.next = newNode;
             _tail = newNode;
+        }
+
+        if (dict.Count == 1) {
+            _head = _tail;
+        }
+
+        if (dict.Count > _capacity) {
+            var nodeToDelete = _head;
+            _head = _head.next;
+            nodeToDelete.next = null;
+            dict.Remove(nodeToDelete.valueContainer.key); // what do we remove here.
         }
 
         // The value of the dict could be a reference to a linked list node
