@@ -1,28 +1,29 @@
 namespace LearningAlgos;
 
 public class ParkingSystem {
-    public int BigSpaceLeft { get; set; }
-    public int MedSpaceLeft { get; set; }
-    public int SmallSpaceLeft { get; set; }
+    private int _bigSpaceLeft;
+    private int _medSpaceLeft; 
+    private int _smallSpaceLeft;
 
     public ParkingSystem(int big, int medium, int small) {
-        BigSpaceLeft = big;
-        MedSpaceLeft = medium;
-        SmallSpaceLeft = small;
+        _bigSpaceLeft = big;
+        _medSpaceLeft = medium;
+        _smallSpaceLeft = small;
     }
     
     public bool AddCar(int carType) {
-        if (carType == 1 && BigSpaceLeft != 0) {
-            BigSpaceLeft -= 1;
+        if (carType == 1 && _bigSpaceLeft != 0) {
+            _bigSpaceLeft -= 1;
             return true;
-        } else if (carType == 2 && MedSpaceLeft != 0) {
-            MedSpaceLeft -= 1;
+        } else if (carType == 2 && _medSpaceLeft != 0) {
+            _medSpaceLeft -= 1;
             return true;
-        } else if (carType == 3 && SmallSpaceLeft != 0) {
-            SmallSpaceLeft -= 1;
+        } else if (carType == 3 && _smallSpaceLeft != 0) {
+            _smallSpaceLeft -= 1;
             return true;
         } else {
             return false;
         }
     }
 }
+

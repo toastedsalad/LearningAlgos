@@ -23,26 +23,26 @@ public class LRUCache {
     
     public void Put(int key, int value) {
         if (dict.TryGetValue(key, out var node)) {
-            // TODO: we touched the value but we did not update 
-            // the order of the linked list.
-            // Refer to our drawing.
+            // Capture references
             var current = node;
             var previous = current.prev;
             
-            current.next = null;
-            current.prev.next = current.next;
-            current.prev = _tail;
-
-
+            // Relink what is behind current
+            // to what is in front of current
+            // N1 -> N2 -> N3
+            // N1 -> N3 -> N2
             previous.next = current.next;
 
-            current.next.prev = current.prev;
-            current.next.next = current.next;
+            if (current.next != null) {
+                current.next.prev = previous;
+            }
 
-
-            _tail.next = node;
-            _tail = node;
-            node.valueContainer.value = value;
+            // Managing tail
+            previous = _tail;
+            _tail.next = current;
+            _tail = current;
+            current.next = null;
+            current.valueContainer.value = value;
         } else {
             var newValue = (key, value);
             var newNode = new DoublyListNode<(int key, int value)>(newValue, null!, _tail);
@@ -52,13 +52,9 @@ public class LRUCache {
             _tail = newNode;
         }
 
-        if (dict.Count == 1) {
-            _head = _tail;
-        }
-
         if (dict.Count > _capacity) {
-            var nodeToDelete = _head;
-            _head = _head.next;
+            var nodeToDelete = _head.next;
+            _head.next = nodeToDelete.next;
             nodeToDelete.next = null;
             dict.Remove(nodeToDelete.valueContainer.key); // what do we remove here.
         }

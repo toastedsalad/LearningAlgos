@@ -57,6 +57,19 @@ namespace AlgosTests {
             Assert.That(cache.Get(1), Is.EqualTo(2));
         }
 
+        [Test]
+        public void GettingItemPutsItAsMostRecentlyUsed() {
+            var cache = new LRUCache(2);
+            cache.Put(1, 1); // add ok
+            cache.Put(2, 2); // add ok
+            cache.Get(1);
+            cache.Put(3, 3); // add ok
+            
+            Assert.That(cache.Get(2), Is.EqualTo(-1));
+            Assert.That(cache.Get(1), Is.EqualTo(1));
+            Assert.That(cache.Get(3), Is.EqualTo(3));
+        }
+
         // [Test]
         // // Continue work from this failing test.
         // public void OverrideStraightAfterPut() {
@@ -69,14 +82,6 @@ namespace AlgosTests {
         // }
     }
 }
-
-
-
-
-
-
-
-
 
 
 
