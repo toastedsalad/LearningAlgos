@@ -4,11 +4,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LearningAlgos {
-    public class DoublyListNode<T> {
+    public class DoublyListNodePublic<T> {
         public T valueContainer;
-        public DoublyListNode<T> next;
-        public DoublyListNode<T> prev;
-        public DoublyListNode(T val = default!, DoublyListNode<T> next = null!, DoublyListNode<T> prev = null!) {
+        public DoublyListNodePublic<T> next;
+        public DoublyListNodePublic<T> prev;
+        public DoublyListNodePublic(T val = default!, DoublyListNodePublic<T> next = null!, DoublyListNodePublic<T> prev = null!) {
             this.valueContainer = val;
             this.next = next;
             this.prev = prev;

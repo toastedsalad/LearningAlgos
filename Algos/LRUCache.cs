@@ -2,6 +2,17 @@ using System.Collections.Generic;
 
 namespace LearningAlgos;
 
+public class DoublyListNode<T> {
+    public T valueContainer;
+    public DoublyListNode<T> next;
+    public DoublyListNode<T> prev;
+    public DoublyListNode(T val = default!, DoublyListNode<T> next = null!, DoublyListNode<T> prev = null!) {
+        this.valueContainer = val;
+        this.next = next;
+        this.prev = prev;
+    }
+}
+
 public class LRUCache {
     private Dictionary<int, DoublyListNode<(int key, int value)>> dict;
     private int _capacity;
@@ -16,32 +27,18 @@ public class LRUCache {
     
     public int Get(int key) {
         if (dict.TryGetValue(key, out var node)) {
+            if (dict.Count > 1) {
+                RelinkRecentlyUsed(node);
+            }
             return node.valueContainer.value;
         }
+
         return -1;
     }
     
     public void Put(int key, int value) {
         if (dict.TryGetValue(key, out var node)) {
-            // Capture references
-            var current = node;
-            var previous = current.prev;
-            
-            // Relink what is behind current
-            // to what is in front of current
-            // N1 -> N2 -> N3
-            // N1 -> N3 -> N2
-            previous.next = current.next;
-
-            if (current.next != null) {
-                current.next.prev = previous;
-            }
-
-            // Managing tail
-            previous = _tail;
-            _tail.next = current;
-            _tail = current;
-            current.next = null;
+            DoublyListNode<(int key, int value)> current = RelinkRecentlyUsed(node);
             current.valueContainer.value = value;
         } else {
             var newValue = (key, value);
@@ -58,11 +55,30 @@ public class LRUCache {
             nodeToDelete.next = null;
             dict.Remove(nodeToDelete.valueContainer.key); // what do we remove here.
         }
+    }
 
-        // The value of the dict could be a reference to a linked list node
-        // if (!dict.TryAdd(key, value)) {
-        //     dict[key] = value;
-        // }
+    private DoublyListNode<(int key, int value)> RelinkRecentlyUsed(DoublyListNode<(int key, int value)> node)
+    {
+        // Capture references
+        var current = node;
+        var previous = current.prev;
+
+        // Relink what is behind current
+        // to what is in front of current
+        // N1 -> N2 -> N3
+        // N1 -> N3 -> N2
+        previous.next = current.next;
+
+        if (current.next != null) {
+            current.next.prev = previous;
+        }
+
+        // Managing tail
+        previous = _tail;
+        _tail.next = current;
+        _tail = current;
+        current.next = null;
+        return current;
     }
 }
 
