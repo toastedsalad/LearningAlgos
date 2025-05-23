@@ -38,8 +38,12 @@ public class LRUCache {
     
     public void Put(int key, int value) {
         if (dict.TryGetValue(key, out var node)) {
-            DoublyListNode<(int key, int value)> current = RelinkRecentlyUsed(node);
-            current.valueContainer.value = value;
+            if (dict.Count > 1) {
+                DoublyListNode<(int key, int value)> current = RelinkRecentlyUsed(node);
+                current.valueContainer.value = value;
+            } else {
+                node.valueContainer.value = value;
+            }
         } else {
             var newValue = (key, value);
             var newNode = new DoublyListNode<(int key, int value)>(newValue, null!, _tail);
@@ -50,15 +54,14 @@ public class LRUCache {
         }
 
         if (dict.Count > _capacity) {
-            var nodeToDelete = _head.next;
+            var nodeToDelete = _head.next; // Head next is null here
             _head.next = nodeToDelete.next;
             nodeToDelete.next = null;
             dict.Remove(nodeToDelete.valueContainer.key); // what do we remove here.
         }
     }
 
-    private DoublyListNode<(int key, int value)> RelinkRecentlyUsed(DoublyListNode<(int key, int value)> node)
-    {
+    private DoublyListNode<(int key, int value)> RelinkRecentlyUsed(DoublyListNode<(int key, int value)> node) {
         // Capture references
         var current = node;
         var previous = current.prev;

@@ -93,16 +93,39 @@ public class LRUCacheTests {
         Assert.That(cache.Get(3), Is.EqualTo(2));
     }
 
-    // [Test]
-    // // Continue work from this failing test.
-    // public void OverrideStraightAfterPut() {
-    //     var cache = new LRUCache(2);
-    //     cache.Put(2, 2); 
-    //     cache.Put(1, 1); 
-    //     cache.Put(1, 2); 
-    //     Assert.That(cache.Get(2), Is.EqualTo(2)); // this is failing
-    //     Assert.That(cache.Get(1), Is.EqualTo(2));
-    // }
+    [Test]
+    public void OverrideStraightAfterPut() {
+        var cache = new LRUCache(2);
+        cache.Put(2, 2); 
+        cache.Put(1, 1); 
+        cache.Put(1, 2); 
+        Assert.That(cache.Get(2), Is.EqualTo(2));
+        Assert.That(cache.Get(1), Is.EqualTo(2));
+    }
+    
+    [Test]
+    public void MultipleOverridesWork() {
+        var cache = new LRUCache(2);
+        cache.Put(2, 1); 
+        cache.Put(2, 2); 
+        Assert.That(cache.Get(2), Is.EqualTo(2));
+        cache.Put(1, 1); 
+        cache.Put(4, 1); 
+        Assert.That(cache.Get(2), Is.EqualTo(-1));
+    }
+
+    // ["LRUCache","put","put","get","get","put","get","get","get"]
+    // [[2],       [2,1],[3,2],[3],   [2], [4,3], [2],  [3],  [4]]
+    //
+    [Test]
+    public void NewTestFromLeTCode() {
+        var cache = new LRUCache(2);
+        cache.Put(2, 1); 
+        cache.Put(3, 2); 
+        Assert.That(cache.Get(3), Is.EqualTo(2));
+        Assert.That(cache.Get(2), Is.EqualTo(1));
+        cache.Put(4, 3); 
+    }
 }
 
 
