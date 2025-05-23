@@ -1,21 +1,21 @@
 namespace LearningAlgos;
 
 public class NodePriv<T> {
-    public T NodeData { get; set; }
+    public T Value { get; set; }
     public NodePriv<T>? NextNode { get; set; }
 
-    public NodePriv(T nodeData, NodePriv<T>? nextNode = null){
-        NodeData = nodeData;
+    public NodePriv(T value, NodePriv<T>? nextNode = null){
+        Value = value;
         NextNode = nextNode;
     }
 }
 
-public class MyLinkedList{
+public class MyLinkedList {
     private NodePriv<int>? _head;
     private NodePriv<int>? _tail;
     public int Length { get; private set; }
 
-    public MyLinkedList(){
+    public MyLinkedList() {
         _head = _tail = null;
         Length = 0;
     }
@@ -28,7 +28,7 @@ public class MyLinkedList{
         var current = _head;
         for (var i = 0; i < Length; i++) {
             if (i == index) {
-                return current.NodeData;
+                return current.Value;
             }
             current = current.NextNode;
         }
@@ -36,7 +36,7 @@ public class MyLinkedList{
         return -1;
     }
 
-    public void AddAtTail(int val){
+    public void AddAtTail(int val) {
         var item =  new NodePriv<int>(val);
         if (Length == 0){
             _head = item;
@@ -50,7 +50,7 @@ public class MyLinkedList{
         }
     }
 
-    public void AddAtHead(int val){
+    public void AddAtHead(int val) {
         var item =  new NodePriv<int>(val);
         if (Length == 0){
             _head = item;

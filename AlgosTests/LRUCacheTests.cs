@@ -78,9 +78,6 @@ public class LRUCacheTests {
         Assert.That(cache.Get(1), Is.EqualTo(-1));
     }
 
-    // ["LRUCache","put","get","put","get","get"]
-    // [[1],[2,1],[2],[3,2],[2],[3]]
-
     [Test]
     public void FromLeetCodeCapacity1AndOverflowBy1() {
         var cache = new LRUCache(1);
@@ -116,7 +113,6 @@ public class LRUCacheTests {
 
     // ["LRUCache","put","put","get","get","put","get","get","get"]
     // [[2],       [2,1],[3,2],[3],   [2], [4,3], [2],  [3],  [4]]
-    //
     [Test]
     public void NewTestFromLeTCode() {
         var cache = new LRUCache(2);
